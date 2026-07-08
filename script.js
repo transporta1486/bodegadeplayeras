@@ -18,28 +18,49 @@
     const alertBackdrop = document.getElementById('alertBackdrop');
     const alertClose = document.getElementById('alertClose');
 
+    const galleryCounter = document.getElementById('galleryCounter');
+
     let selectedSize = null;
+
+    function setGalleryImage(thumb) {
+        const newSrc = thumb.getAttribute('data-src');
+        const index = thumb.getAttribute('data-index');
+        if (!newSrc || !mainImage) return;
+
+        mainImage.classList.add('is-fading');
+        setTimeout(function () {
+            mainImage.src = newSrc;
+            mainImage.style.transform = 'scale(1)';
+            mainImage.style.transformOrigin = 'center center';
+            mainImage.classList.remove('is-fading');
+        }, 180);
+
+        thumbs.forEach(function (t) {
+            t.classList.remove('is-active');
+            t.setAttribute('aria-selected', 'false');
+        });
+        thumb.classList.add('is-active');
+        thumb.setAttribute('aria-selected', 'true');
+
+        if (galleryCounter && index !== null) {
+            galleryCounter.textContent = (parseInt(index, 10) + 1) + ' / ' + thumbs.length;
+        }
+    }
 
     // ═══════════════════════════════════════════
     // Galería: cambio de imagen con miniaturas
     // ═══════════════════════════════════════════
     thumbs.forEach(function (thumb) {
         thumb.addEventListener('click', function () {
-            const newSrc = thumb.getAttribute('data-src');
-            if (!newSrc || !mainImage) return;
-
-            mainImage.src = newSrc;
-            mainImage.style.transform = 'scale(1)';
-            mainImage.style.transformOrigin = 'center center';
-
-            thumbs.forEach(function (t) {
-                t.classList.remove('is-active');
-                t.setAttribute('aria-selected', 'false');
-            });
-            thumb.classList.add('is-active');
-            thumb.setAttribute('aria-selected', 'true');
+            setGalleryImage(thumb);
         });
     });
+
+    // Abrir vista según ?v=2 en la URL
+    const urlV = new URLSearchParams(window.location.search).get('v');
+    if (urlV === '2' && thumbs[1]) {
+        setGalleryImage(thumbs[1]);
+    }
 
     // ═══════════════════════════════════════════
     // Zoom premium que sigue el cursor (escritorio)

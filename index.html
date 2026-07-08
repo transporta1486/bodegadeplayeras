@@ -40,12 +40,12 @@
 
     <!-- Hero: reemplaza src con tu foto principal de campaña -->
     <section class="hero-shop">
-        <img class="hero-shop__bg" src="https://images.unsplash.com/photo-1523381210434-271e8be1f52b?auto=format&fit=crop&w=1600&q=85" alt="Colección oversize streetwear">
+        <img class="hero-shop__bg" src="https://i.imgur.com/gK5T6S4.jpg" alt="Playera Bugs Bunny Warner Bros oversize">
         <div class="hero-shop__overlay"></div>
         <div class="hero-shop__content">
             <span class="hero-shop__badge">Nueva colección 2026</span>
-            <h1 class="hero-shop__title">Streetwear<br>Oversize MX</h1>
-            <p class="hero-shop__sub">Playeras premium en blanco y negro. Tela 200g, estampado frente y espalda. Elige tu talla y compra en un clic.</p>
+            <h1 class="hero-shop__title">Bugs Bunny<br>Warner Bros</h1>
+            <p class="hero-shop__sub">Playeras oversize con estampado premium. Dos diseños: estampado grande o logo minimal. Desde $199 MXN.</p>
             <a href="#catalogo" class="hero-shop__cta">Explorar catálogo</a>
             <a href="producto.html" class="hero-shop__cta hero-shop__cta--ghost">Ver producto destacado</a>
         </div>
@@ -70,10 +70,9 @@
 
             <div class="filter-chips" id="filterChips">
                 <button class="chip is-active" data-filter="all">Todos</button>
-                <button class="chip" data-filter="blanco">Blanco</button>
-                <button class="chip" data-filter="negro">Negro</button>
+                <button class="chip" data-filter="grande">Estampado grande</button>
+                <button class="chip" data-filter="minimal">Logo minimal</button>
                 <button class="chip" data-filter="199">$199</button>
-                <button class="chip" data-filter="299">$299</button>
             </div>
         </div>
     </section>
@@ -83,13 +82,13 @@
         <div class="container">
             <div class="shop-grid" id="shopGrid">
 
-                <a href="producto.html" class="shop-card" data-color="blanco" data-price="199">
-                    <div class="shop-card__media">
+                <a href="producto.html" class="shop-card" data-variant="grande" data-price="199">
+                    <div class="shop-card__media shop-card__media--contain">
                         <span class="shop-card__badge shop-card__badge--new">Nuevo</span>
                         <span class="shop-card__wish">♡</span>
-                        <img src="https://images.unsplash.com/photo-1576566588028-4147f3842f27?auto=format&fit=crop&w=600&q=85" alt="Graphic Tee Blanco" loading="lazy">
+                        <img src="https://i.imgur.com/gK5T6S4.jpg" alt="Playera Bugs Bunny Warner Bros estampado grande" loading="lazy">
                     </div>
-                    <h3 class="shop-card__title">Graphic Tee Oversize Blanco</h3>
+                    <h3 class="shop-card__title">Playera Bugs Bunny Warner Bros — Estampado Grande</h3>
                     <div class="shop-card__rating">
                         <span class="shop-card__stars">★★★★★</span>
                         <span class="shop-card__reviews">4.9 (42)</span>
@@ -101,13 +100,13 @@
                     <p class="shop-card__urgency">¡Últimas piezas!</p>
                 </a>
 
-                <a href="producto.html" class="shop-card" data-color="negro" data-price="199">
-                    <div class="shop-card__media">
-                        <span class="shop-card__badge shop-card__badge--sale">-33%</span>
+                <a href="producto.html?v=2" class="shop-card" data-variant="minimal" data-price="199">
+                    <div class="shop-card__media shop-card__media--contain">
+                        <span class="shop-card__badge shop-card__badge--hot">Top ventas</span>
                         <span class="shop-card__wish">♡</span>
-                        <img src="https://images.unsplash.com/photo-1583743814966-8936f5b7be1a?auto=format&fit=crop&w=600&q=85" alt="Graphic Tee Negro" loading="lazy">
+                        <img src="https://i.imgur.com/E8w2eM6.jpg" alt="Playera Bugs Bunny logo minimal" loading="lazy">
                     </div>
-                    <h3 class="shop-card__title">Graphic Tee Oversize Negro</h3>
+                    <h3 class="shop-card__title">Playera Bugs Bunny — Logo Minimal</h3>
                     <div class="shop-card__rating">
                         <span class="shop-card__stars">★★★★★</span>
                         <span class="shop-card__reviews">4.8 (36)</span>
@@ -117,69 +116,6 @@
                         <span class="shop-card__price-old">$299</span>
                     </div>
                     <p class="shop-card__urgency">Pocas unidades en M y L</p>
-                </a>
-
-                <a href="producto.html" class="shop-card" data-color="negro" data-price="299">
-                    <div class="shop-card__media">
-                        <span class="shop-card__badge shop-card__badge--hot">Top ventas</span>
-                        <span class="shop-card__wish">♡</span>
-                        <img src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=600&q=85" alt="Urban Print Negro" loading="lazy">
-                    </div>
-                    <h3 class="shop-card__title">Urban Print Tee Negro Premium</h3>
-                    <div class="shop-card__rating">
-                        <span class="shop-card__stars">★★★★☆</span>
-                        <span class="shop-card__reviews">4.7 (28)</span>
-                    </div>
-                    <div class="shop-card__price">
-                        <span class="shop-card__price-now">$299</span>
-                    </div>
-                    <p class="shop-card__urgency">Edición limitada</p>
-                </a>
-
-                <a href="producto.html" class="shop-card" data-color="blanco" data-price="299">
-                    <div class="shop-card__media">
-                        <span class="shop-card__badge shop-card__badge--new">Nuevo</span>
-                        <span class="shop-card__wish">♡</span>
-                        <img src="https://images.unsplash.com/photo-1503342217507-b15a8e751fff?auto=format&fit=crop&w=600&q=85" alt="Essential Blanco" loading="lazy">
-                    </div>
-                    <h3 class="shop-card__title">Essential Oversize Blanco</h3>
-                    <div class="shop-card__rating">
-                        <span class="shop-card__stars">★★★★★</span>
-                        <span class="shop-card__reviews">4.9 (19)</span>
-                    </div>
-                    <div class="shop-card__price">
-                        <span class="shop-card__price-now">$299</span>
-                    </div>
-                </a>
-
-                <a href="producto.html" class="shop-card" data-color="negro" data-price="199">
-                    <div class="shop-card__media">
-                        <img src="https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?auto=format&fit=crop&w=600&q=85" alt="Street Logo Negro" loading="lazy">
-                    </div>
-                    <h3 class="shop-card__title">Street Logo Tee Negro</h3>
-                    <div class="shop-card__rating">
-                        <span class="shop-card__stars">★★★★☆</span>
-                        <span class="shop-card__reviews">4.6 (15)</span>
-                    </div>
-                    <div class="shop-card__price">
-                        <span class="shop-card__price-now">$199</span>
-                        <span class="shop-card__price-old">$249</span>
-                    </div>
-                </a>
-
-                <a href="producto.html" class="shop-card" data-color="blanco" data-price="199">
-                    <div class="shop-card__media">
-                        <img src="https://images.unsplash.com/photo-1552374196-1ab2a1c593e8?auto=format&fit=crop&w=600&q=85" alt="Classic Oversize Blanco" loading="lazy">
-                    </div>
-                    <h3 class="shop-card__title">Classic Oversize Blanco</h3>
-                    <div class="shop-card__rating">
-                        <span class="shop-card__stars">★★★★★</span>
-                        <span class="shop-card__reviews">4.8 (31)</span>
-                    </div>
-                    <div class="shop-card__price">
-                        <span class="shop-card__price-now">$199</span>
-                    </div>
-                    <p class="shop-card__urgency">¡Últimas piezas!</p>
                 </a>
 
             </div>
@@ -220,16 +156,16 @@
             </div>
             <div class="lookbook-masonry">
                 <figure>
-                    <img src="https://images.unsplash.com/photo-1529139574093-099fbd6a5430?auto=format&fit=crop&w=600&q=80" alt="Urban fit" loading="lazy">
-                    <figcaption>Urban fit</figcaption>
+                    <img src="https://i.imgur.com/gK5T6S4.jpg" alt="Estampado Warner Bros grande" loading="lazy">
+                    <figcaption>Estampado grande</figcaption>
                 </figure>
                 <figure>
-                    <img src="https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?auto=format&fit=crop&w=600&q=80" alt="Street style" loading="lazy">
-                    <figcaption>Street style</figcaption>
+                    <img src="https://i.imgur.com/E8w2eM6.jpg" alt="Logo Bugs Bunny minimal" loading="lazy">
+                    <figcaption>Logo minimal</figcaption>
                 </figure>
                 <figure>
-                    <img src="https://images.unsplash.com/photo-1552374196-1ab2a1c593e8?auto=format&fit=crop&w=600&q=80" alt="City vibe" loading="lazy">
-                    <figcaption>City vibe</figcaption>
+                    <img src="https://i.imgur.com/gK5T6S4.jpg" alt="Streetwear oversize" loading="lazy">
+                    <figcaption>Streetwear MX</figcaption>
                 </figure>
             </div>
         </div>

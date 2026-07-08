@@ -17,12 +17,12 @@
             chip.classList.add('is-active');
 
             cards.forEach(function (card) {
-                const color = card.getAttribute('data-color');
+                const variant = card.getAttribute('data-variant');
                 const price = card.getAttribute('data-price');
                 let show = false;
 
                 if (filter === 'all') show = true;
-                else if (filter === 'blanco' || filter === 'negro') show = color === filter;
+                else if (filter === 'grande' || filter === 'minimal') show = variant === filter;
                 else if (filter === '199' || filter === '299') show = price === filter;
 
                 card.classList.toggle('is-hidden', !show);
