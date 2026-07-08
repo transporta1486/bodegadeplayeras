@@ -27,10 +27,15 @@
         const index = thumb.getAttribute('data-index');
         if (!newSrc || !mainImage) return;
 
+        mainImage.classList.remove('photo--grande', 'photo--chica');
+        mainImage.classList.add(index === '1' ? 'photo--chica' : 'photo--grande');
+
         mainImage.classList.add('is-fading');
         setTimeout(function () {
             mainImage.src = newSrc;
-            mainImage.style.transform = 'scale(1)';
+            const isChica = index === '1';
+            const baseScale = isChica ? 1.45 : 1.38;
+            mainImage.style.transform = 'scale(' + baseScale + ')';
             mainImage.style.transformOrigin = 'center center';
             mainImage.classList.remove('is-fading');
         }, 180);
@@ -70,13 +75,16 @@
             const rect = galleryMain.getBoundingClientRect();
             const x = ((e.clientX - rect.left) / rect.width) * 100;
             const y = ((e.clientY - rect.top) / rect.height) * 100;
+            const isChica = mainImage.classList.contains('photo--chica');
+            const zoom = isChica ? 1.85 : 1.75;
 
             mainImage.style.transformOrigin = x + '% ' + y + '%';
-            mainImage.style.transform = 'scale(2)';
+            mainImage.style.transform = 'scale(' + zoom + ')';
         });
 
         galleryMain.addEventListener('mouseleave', function () {
-            mainImage.style.transform = 'scale(1)';
+            const isChica = mainImage.classList.contains('photo--chica');
+            mainImage.style.transform = 'scale(' + (isChica ? 1.45 : 1.38) + ')';
             mainImage.style.transformOrigin = 'center center';
         });
     }
