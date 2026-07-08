@@ -7,7 +7,7 @@
 
     <!-- SEO: Reemplaza título y descripción con el nombre real de tu playera -->
     <title>Playera Bugs Bunny Warner Bros Oversize | Bodega de Playeras</title>
-    <meta name="description" content="Playera oversize Bugs Bunny Warner Bros. Estampado premium, fondo minimalista. Tallas XS-XXL. Compra por WhatsApp desde $199.">
+    <meta name="description" content="Playera unisex oversize Bugs Bunny Warner Bros. Talla única holgada. Compra por WhatsApp desde $199.">
 
     <!-- Tipografía moderna estilo marca global -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -54,7 +54,7 @@
             <section class="product-info">
 
                 <!-- Nombre del producto: el JS lee este h1 automáticamente -->
-                <h1 class="product-info__title">Playera Bugs Bunny Warner Bros Oversize</h1>
+                <h1 class="product-info__title">Playera Bugs Bunny Warner Bros — Unisex Oversize</h1>
 
                 <!-- Precio: cambia a $199 o $299 — el JS lee .product-info__price -->
                 <div class="product-info__price-row">
@@ -77,30 +77,16 @@
                 </div>
 
                 <p class="product-info__desc">
-                    Playera <strong>100% oversize</strong> con estampado Bugs Bunny Warner Bros.
-                    Dos diseños: estampado grande o logo pequeño. Tela 200g premium, corte holgado unisex,
-                    mangas amplias y caída streetwear. Tallas XS a XXL.
+                    Playera <strong>unisex oversize</strong> con estampado Bugs Bunny Warner Bros.
+                    Talla única con calce holgado para todos. Tela 200g premium, mangas amplias y caída streetwear.
                 </p>
 
-                <!-- Selector de tallas -->
-                <div class="size-selector">
-                    <div class="size-selector__header">
-                        <span class="size-selector__label">Talla</span>
-                        <!-- Etiqueta de urgencia psicológica -->
-                        <span class="size-selector__urgency">¡Últimas piezas disponibles!</span>
-                    </div>
-
-                    <div class="size-selector__grid" id="sizeGrid" role="group" aria-label="Selecciona tu talla">
-                        <button type="button" class="size-btn" data-size="XS">XS</button>
-                        <button type="button" class="size-btn" data-size="S">S</button>
-                        <button type="button" class="size-btn" data-size="M">M</button>
-                        <button type="button" class="size-btn" data-size="L">L</button>
-                        <button type="button" class="size-btn" data-size="XL">XL</button>
-                        <button type="button" class="size-btn" data-size="XXL">XXL</button>
-                    </div>
-
-                    <p class="size-selector__hint" id="sizeHint">Pocas unidades en esta talla</p>
+                <div class="fit-badge">
+                    <span class="fit-badge__tag">Unisex</span>
+                    <span class="fit-badge__tag">Oversize</span>
+                    <span class="fit-badge__tag">Talla única</span>
                 </div>
+                <p class="fit-badge__note">Sin selección de talla — una sola medida oversize que adapta a la mayoría.</p>
 
                 <!-- Botón principal: el JS captura el clic y abre WhatsApp -->
                 <button type="button" class="btn-buy" id="btnBuy">
@@ -134,17 +120,6 @@
     </footer>
 
     <a href="https://wa.me/525569732164" class="wa-float" target="_blank" rel="noopener" aria-label="WhatsApp">💬</a>
-
-    <!-- Modal de validación: aparece si no seleccionó talla -->
-    <div class="alert-modal" id="alertModal" role="dialog" aria-modal="true" aria-labelledby="alertTitle" hidden>
-        <div class="alert-modal__backdrop" id="alertBackdrop"></div>
-        <div class="alert-modal__box">
-            <div class="alert-modal__icon" aria-hidden="true">!</div>
-            <h2 class="alert-modal__title" id="alertTitle">Selecciona tu talla</h2>
-            <p class="alert-modal__text">Por favor, selecciona tu talla antes de continuar con tu pedido</p>
-            <button type="button" class="alert-modal__btn" id="alertClose">Entendido</button>
-        </div>
-    </div>
 
     <script src="script.js"></script>
 </body>
