@@ -5,328 +5,295 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="google-site-verification" content="XdOp3pEtUwwZTBhezQK1dflrmtGBMwA7yBj2yys1PDE">
 
-    <!-- SEO PODEROSO -->
-    <title>Bodega de Playeras Oversize | Mayoreo desde $85</title>
-    <meta name="description" content="Bodega de playeras oversize en blanco y negro, tela 200g, estampado frente y espalda. Mayoreo 3+ piezas $85, unitario $100. Martes a domingo 4-8 PM. WhatsApp 5569732164">
-    <meta name="keywords" content="playeras mayoreo atizapan, bodega de playeras naucalpan, playeras para serigrafia estado de mexico, distribuidora de ropa tlalnepantla">
-    <link rel="canonical" href="https://tusitio.com/">
+    <title>Bodega de Playeras | Streetwear Oversize — Desde $199</title>
+    <meta name="description" content="Tienda de playeras oversize en blanco y negro. Estilo urbano, tallas XS-XXL. Compra directa por WhatsApp. Envío CDMX y Edomex. 5569732164">
+    <link rel="canonical" href="https://bodegadeplayeras.netlify.app/">
 
-    <!-- TIPOGRAFÍA -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="pro.css">
-    <style>
-        .hero--home {
-            background-image: url('https://images.unsplash.com/photo-1523381210434-271e8be1f52b?auto=format&fit=crop&w=1400&q=80');
-            background-size: cover;
-            background-position: center;
-        }
-        .product-img { height: 320px; }
-        .btn-pay {
-            background: linear-gradient(135deg, var(--wood-dark), var(--wood));
-            border-color: var(--accent);
-            color: var(--text);
-        }
-        .btn-pay:hover {
-            background: var(--accent);
-            color: var(--black);
-            border-color: var(--accent);
-        }
-        .pay-alert-overlay {
-            position: fixed;
-            inset: 0;
-            z-index: 2000;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 20px;
-            background: rgba(5, 4, 3, 0.75);
-            backdrop-filter: blur(8px);
-            opacity: 0;
-            visibility: hidden;
-            transition: opacity 0.25s ease, visibility 0.25s ease;
-        }
-        .pay-alert-overlay.is-visible {
-            opacity: 1;
-            visibility: visible;
-        }
-        .pay-alert-box {
-            max-width: 420px;
-            width: 100%;
-            padding: 28px 26px;
-            background: var(--surface);
-            border: 1px solid var(--border-strong);
-            border-radius: var(--radius-lg);
-            box-shadow: var(--shadow-glow);
-            text-align: center;
-        }
-        .pay-alert-box h3 {
-            font-size: 1.1rem;
-            margin-bottom: 12px;
-            color: var(--accent);
-        }
-        .pay-alert-box p {
-            font-size: 0.95rem;
-            color: var(--text-muted);
-            line-height: 1.6;
-            margin-bottom: 22px;
-        }
-        .pay-alert-actions {
-            display: flex;
-            gap: 10px;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-        .pay-alert-actions button {
-            padding: 12px 22px;
-            border-radius: var(--radius-sm);
-            font-weight: 700;
-            font-size: 0.85rem;
-            cursor: pointer;
-            border: none;
-            font-family: inherit;
-        }
-        .pay-alert-cancel {
-            background: transparent;
-            color: var(--text-muted);
-            border: 1px solid var(--border) !important;
-        }
-        .pay-alert-confirm {
-            background: var(--accent);
-            color: var(--black);
-        }
-    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
-    <!-- NAVBAR -->
-    <nav class="navbar">
-        <div class="logo">Bodega de<span>playeras</span></div>
-        <ul class="nav-links">
-            <li><a href="producto.html">Tienda</a></li>
-            <li><a href="#detalles">Detalles</a></li>
-            <li><a href="#zonas">Sucursales</a></li>
-            <li><a href="#catalogo">Catálogo</a></li>
-            <li><a href="#contacto">Contacto</a></li>
-        </ul>
-        <div class="nav-meta">NAUCALPAN · TLALNEPANTLA · IZCALLI · CDMX · <a href="tel:+525569732164">55 6973 2164</a></div>
-    </nav>
+    <div class="promo-bar">
+        <strong>ENVÍO LOCAL</strong> · Compra por WhatsApp · Playeras desde <strong>$199 MXN</strong>
+    </div>
 
-    <p class="alert-banner"><strong>Stock limitado</strong> — Aparta las tuyas antes de que se agoten</p>
-
-    <header class="hero hero--home">
-        <div class="hero-content">
-            <span class="hero-badge">🔥 TENDENCIA OVERSIZE</span>
-            <h1>BODEGA DE PLAYERAS</h1>
-            <p>Bodega de playeras. Playeras oversize en ⚪ Blanco y ⚫ Negro.</p>
-            <a href="#catalogo" class="btn-cta">Ver Catálogo</a>
-            <a href="producto.html" class="btn-cta" style="margin-left:12px;background:transparent;border:2px solid var(--accent);color:var(--accent)">Tienda Online — $199</a>
+    <header class="site-header">
+        <div class="site-header__inner">
+            <a href="index.html" class="site-header__logo">BODEGA<span>PLAYERAS</span></a>
+            <ul class="site-header__nav" id="mainNav">
+                <li><a href="#novedades" class="is-active">Novedades</a></li>
+                <li><a href="#catalogo">Catálogo</a></li>
+                <li><a href="#sucursales">Sucursales</a></li>
+                <li><a href="#faq">Ayuda</a></li>
+            </ul>
+            <div class="site-header__actions">
+                <a href="https://wa.me/525569732164" class="site-header__wa" target="_blank" rel="noopener">WhatsApp</a>
+                <button class="site-header__menu-btn" id="menuBtn" aria-label="Menú">
+                    <span></span><span></span><span></span>
+                </button>
+            </div>
         </div>
     </header>
 
-    <section class="info-bar">
-        <div><strong>Horario</strong>Martes a Domingo · 4PM–8PM</div>
-        <div><strong>Mayoreo</strong>3+ piezas · $85 c/u</div>
-        <div><strong>Unitario</strong>1 pieza · $100</div>
-        <div><strong>Contacto</strong><a href="https://wa.me/525569732164">5569732164</a></div>
-    </section>
-
-    <section class="detalles-section" id="detalles">
-        <h2 class="section-title" style="margin-top:0">Detalles del producto</h2>
-        <p>Tela 200 g · Estampado frente y espalda · Corte oversize · Talla unitalla · Urbano, streetwear, gym o reventa 🔥</p>
-        <div class="pricing-banner" style="margin:28px 0 0">
-            <h3>💥 PRECIOS 💥</h3>
-            <div class="pricing-row">
-                <div>🛍️ Mayoreo 3+ pzas<span>$85</span></div>
-                <div>🛒 1 pieza<span>$100</span></div>
-            </div>
+    <!-- Hero: reemplaza src con tu foto principal de campaña -->
+    <section class="hero-shop">
+        <img class="hero-shop__bg" src="https://images.unsplash.com/photo-1523381210434-271e8be1f52b?auto=format&fit=crop&w=1600&q=85" alt="Colección oversize streetwear">
+        <div class="hero-shop__overlay"></div>
+        <div class="hero-shop__content">
+            <span class="hero-shop__badge">Nueva colección 2026</span>
+            <h1 class="hero-shop__title">Streetwear<br>Oversize MX</h1>
+            <p class="hero-shop__sub">Playeras premium en blanco y negro. Tela 200g, estampado frente y espalda. Elige tu talla y compra en un clic.</p>
+            <a href="#catalogo" class="hero-shop__cta">Explorar catálogo</a>
+            <a href="producto.html" class="hero-shop__cta hero-shop__cta--ghost">Ver producto destacado</a>
         </div>
     </section>
 
-    <h2 class="section-title" id="zonas">Selecciona tu Sucursal</h2>
-    <div class="zonas-container">
-        <a href="atizapan.html" class="zona-link">Atizapán de Zaragoza</a>
-        <a href="naucalpan.html" class="zona-link">Naucalpan</a>
-        <a href="tlalnepantla.html" class="zona-link">Tlalnepantla</a>
-        <a href="izcalli.html" class="zona-link">Cuautitlán Izcalli</a>
+    <div class="trust-strip">
+        <div class="trust-strip__item"><strong>Envío local</strong>CDMX y Edomex</div>
+        <div class="trust-strip__item"><strong>Pago fácil</strong>Transferencia u Oxxo</div>
+        <div class="trust-strip__item"><strong>Tela 200g</strong>Algodón premium</div>
+        <div class="trust-strip__item"><strong>WhatsApp</strong>Atención directa</div>
     </div>
 
-    <!-- CATALOGO -->
-    <h2 class="section-title" id="catalogo">Playeras Oversize — Blanco y Negro</h2>
-    <main class="grid-productos">
-        
-        <!-- Producto 1 -->
-        <article class="product-card">
-            <span class="badge">⚪ BLANCO</span>
-            <a href="producto.html"><img src="https://images.unsplash.com/photo-1576566588028-4147f3842f27?auto=format&fit=crop&w=500&q=80" alt="Playera oversize blanca" class="product-img"></a>
-            <div class="product-info">
-                <h3><a href="producto.html" style="text-decoration:none;color:inherit">Playera Graphic Tee Oversize</a></h3>
-                <ul class="features-list"><li>Tela 200g · Estampado frente y espalda</li><li>Oversize · Tallas XS a XXL</li></ul>
-                <p class="product-price">$199 <span class="text-muted">MXN</span></p>
-                <p class="unitalla-info" style="font-size: 0.8rem; line-height: 1.4; color: #555; background: #f5f5f5; padding: 10px; border-radius: 5px; margin-bottom: 15px;">📏 Nueva tienda online: selecciona tu talla y compra directo por WhatsApp.</p>
-                <a href="producto.html" class="btn-buy btn-pay" style="display:block;text-align:center;text-decoration:none">🛍️ Ver producto y comprar</a>
+    <section class="shop-section" id="novedades">
+        <div class="container">
+            <div class="section-head">
+                <div>
+                    <h2>Tendencias del momento</h2>
+                    <p>Lo más vendido esta semana</p>
+                </div>
+                <a href="#catalogo" class="section-head__link">Ver todo</a>
             </div>
-        </article>
 
-        <!-- Producto 2 -->
-        <article class="product-card">
-            <span class="badge">⚫ NEGRO</span>
-            <a href="producto.html"><img src="https://images.unsplash.com/photo-1583743814966-8936f5b7be1a?auto=format&fit=crop&w=500&q=80" alt="Playera oversize negra" class="product-img"></a>
-            <div class="product-info">
-                <h3><a href="producto.html" style="text-decoration:none;color:inherit">Playera Graphic Tee Oversize</a></h3>
-                <ul class="features-list"><li>Tela 200g · Estampado frente y espalda</li><li>Oversize · Tallas XS a XXL</li></ul>
-                <p class="product-price">$199 <span class="text-muted">MXN</span></p>
-                <p class="unitalla-info" style="font-size: 0.8rem; line-height: 1.4; color: #555; background: #f5f5f5; padding: 10px; border-radius: 5px; margin-bottom: 15px;">📏 Nueva tienda online: selecciona tu talla y compra directo por WhatsApp.</p>
-                <a href="producto.html" class="btn-buy btn-pay" style="display:block;text-align:center;text-decoration:none">🛍️ Ver producto y comprar</a>
-            </div>
-        </article>
-
-    </main>
-
-    <section class="garantias-section" aria-label="Garantías de compra">
-        <div class="garantias-inner container">
-            <div class="garantia-item">
-                <span class="garantia-icon" aria-hidden="true">💳</span>
-                <h3>Pago Seguro</h3>
-                <p>Protección con Mercado Pago</p>
-            </div>
-            <div class="garantia-item">
-                <span class="garantia-icon" aria-hidden="true">🚀</span>
-                <h3>Envío Express Local</h3>
-                <p>Entrega rápida en zona metropolitana</p>
-            </div>
-            <div class="garantia-item">
-                <span class="garantia-icon" aria-hidden="true">🧵</span>
-                <h3>Algodón Pesado 200gr</h3>
-                <p>Tela premium con caída oversize</p>
+            <div class="filter-chips" id="filterChips">
+                <button class="chip is-active" data-filter="all">Todos</button>
+                <button class="chip" data-filter="blanco">Blanco</button>
+                <button class="chip" data-filter="negro">Negro</button>
+                <button class="chip" data-filter="199">$199</button>
+                <button class="chip" data-filter="299">$299</button>
             </div>
         </div>
     </section>
 
-    <section class="lookbook-section" aria-label="Lookbook streetwear">
-        <h2 class="section-title">Lookbook Streetwear</h2>
-        <div class="lookbook-grid">
-            <figure class="lookbook-item">
-                <img src="https://images.unsplash.com/photo-1529139574093-099fbd6a5430?auto=format&fit=crop&w=600&q=80" alt="Calce oversize en la calle" loading="lazy">
-                <span>Urban fit</span>
-            </figure>
-            <figure class="lookbook-item">
-                <img src="https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?auto=format&fit=crop&w=600&q=80" alt="Estilo streetwear con playera oversize" loading="lazy">
-                <span>Street style</span>
-            </figure>
-            <figure class="lookbook-item">
-                <img src="https://images.unsplash.com/photo-1552374196-1ab2a1c593e8?auto=format&fit=crop&w=600&q=80" alt="Look urbano con playera holgada" loading="lazy">
-                <span>City vibe</span>
-            </figure>
+    <!-- Catálogo: reemplaza imágenes src con tus fotos reales -->
+    <section class="shop-section" id="catalogo" style="padding-top:0">
+        <div class="container">
+            <div class="shop-grid" id="shopGrid">
+
+                <a href="producto.html" class="shop-card" data-color="blanco" data-price="199">
+                    <div class="shop-card__media">
+                        <span class="shop-card__badge shop-card__badge--new">Nuevo</span>
+                        <span class="shop-card__wish">♡</span>
+                        <img src="https://images.unsplash.com/photo-1576566588028-4147f3842f27?auto=format&fit=crop&w=600&q=85" alt="Graphic Tee Blanco" loading="lazy">
+                    </div>
+                    <h3 class="shop-card__title">Graphic Tee Oversize Blanco</h3>
+                    <div class="shop-card__rating">
+                        <span class="shop-card__stars">★★★★★</span>
+                        <span class="shop-card__reviews">4.9 (42)</span>
+                    </div>
+                    <div class="shop-card__price">
+                        <span class="shop-card__price-now">$199</span>
+                        <span class="shop-card__price-old">$299</span>
+                    </div>
+                    <p class="shop-card__urgency">¡Últimas piezas!</p>
+                </a>
+
+                <a href="producto.html" class="shop-card" data-color="negro" data-price="199">
+                    <div class="shop-card__media">
+                        <span class="shop-card__badge shop-card__badge--sale">-33%</span>
+                        <span class="shop-card__wish">♡</span>
+                        <img src="https://images.unsplash.com/photo-1583743814966-8936f5b7be1a?auto=format&fit=crop&w=600&q=85" alt="Graphic Tee Negro" loading="lazy">
+                    </div>
+                    <h3 class="shop-card__title">Graphic Tee Oversize Negro</h3>
+                    <div class="shop-card__rating">
+                        <span class="shop-card__stars">★★★★★</span>
+                        <span class="shop-card__reviews">4.8 (36)</span>
+                    </div>
+                    <div class="shop-card__price">
+                        <span class="shop-card__price-now">$199</span>
+                        <span class="shop-card__price-old">$299</span>
+                    </div>
+                    <p class="shop-card__urgency">Pocas unidades en M y L</p>
+                </a>
+
+                <a href="producto.html" class="shop-card" data-color="negro" data-price="299">
+                    <div class="shop-card__media">
+                        <span class="shop-card__badge shop-card__badge--hot">Top ventas</span>
+                        <span class="shop-card__wish">♡</span>
+                        <img src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=600&q=85" alt="Urban Print Negro" loading="lazy">
+                    </div>
+                    <h3 class="shop-card__title">Urban Print Tee Negro Premium</h3>
+                    <div class="shop-card__rating">
+                        <span class="shop-card__stars">★★★★☆</span>
+                        <span class="shop-card__reviews">4.7 (28)</span>
+                    </div>
+                    <div class="shop-card__price">
+                        <span class="shop-card__price-now">$299</span>
+                    </div>
+                    <p class="shop-card__urgency">Edición limitada</p>
+                </a>
+
+                <a href="producto.html" class="shop-card" data-color="blanco" data-price="299">
+                    <div class="shop-card__media">
+                        <span class="shop-card__badge shop-card__badge--new">Nuevo</span>
+                        <span class="shop-card__wish">♡</span>
+                        <img src="https://images.unsplash.com/photo-1503342217507-b15a8e751fff?auto=format&fit=crop&w=600&q=85" alt="Essential Blanco" loading="lazy">
+                    </div>
+                    <h3 class="shop-card__title">Essential Oversize Blanco</h3>
+                    <div class="shop-card__rating">
+                        <span class="shop-card__stars">★★★★★</span>
+                        <span class="shop-card__reviews">4.9 (19)</span>
+                    </div>
+                    <div class="shop-card__price">
+                        <span class="shop-card__price-now">$299</span>
+                    </div>
+                </a>
+
+                <a href="producto.html" class="shop-card" data-color="negro" data-price="199">
+                    <div class="shop-card__media">
+                        <img src="https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?auto=format&fit=crop&w=600&q=85" alt="Street Logo Negro" loading="lazy">
+                    </div>
+                    <h3 class="shop-card__title">Street Logo Tee Negro</h3>
+                    <div class="shop-card__rating">
+                        <span class="shop-card__stars">★★★★☆</span>
+                        <span class="shop-card__reviews">4.6 (15)</span>
+                    </div>
+                    <div class="shop-card__price">
+                        <span class="shop-card__price-now">$199</span>
+                        <span class="shop-card__price-old">$249</span>
+                    </div>
+                </a>
+
+                <a href="producto.html" class="shop-card" data-color="blanco" data-price="199">
+                    <div class="shop-card__media">
+                        <img src="https://images.unsplash.com/photo-1552374196-1ab2a1c593e8?auto=format&fit=crop&w=600&q=85" alt="Classic Oversize Blanco" loading="lazy">
+                    </div>
+                    <h3 class="shop-card__title">Classic Oversize Blanco</h3>
+                    <div class="shop-card__rating">
+                        <span class="shop-card__stars">★★★★★</span>
+                        <span class="shop-card__reviews">4.8 (31)</span>
+                    </div>
+                    <div class="shop-card__price">
+                        <span class="shop-card__price-now">$199</span>
+                    </div>
+                    <p class="shop-card__urgency">¡Últimas piezas!</p>
+                </a>
+
+            </div>
+        </div>
+    </section>
+
+    <div class="flash-banner">
+        <div>
+            <h3>Oferta flash — Compra hoy</h3>
+            <p>Selecciona tu talla y cierra tu pedido por WhatsApp en menos de 2 minutos</p>
+        </div>
+        <a href="producto.html" class="flash-banner__btn">Comprar ahora</a>
+    </div>
+
+    <section class="zones-section" id="sucursales">
+        <div class="container">
+            <div class="section-head">
+                <div>
+                    <h2>Nuestras sucursales</h2>
+                    <p>Recoge en tienda o coordina envío por WhatsApp</p>
+                </div>
+            </div>
+            <div class="zones-scroll">
+                <a href="atizapan.html" class="zone-pill">Atizapán de Zaragoza</a>
+                <a href="naucalpan.html" class="zone-pill">Naucalpan</a>
+                <a href="tlalnepantla.html" class="zone-pill">Tlalnepantla</a>
+                <a href="izcalli.html" class="zone-pill">Cuautitlán Izcalli</a>
+                <a href="cuhutemoc.html" class="zone-pill">Cuauhtémoc CDMX</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="lookbook-section">
+        <div class="container">
+            <div class="section-head">
+                <h2>Lookbook</h2>
+                <p>Inspírate con el estilo oversize</p>
+            </div>
+            <div class="lookbook-masonry">
+                <figure>
+                    <img src="https://images.unsplash.com/photo-1529139574093-099fbd6a5430?auto=format&fit=crop&w=600&q=80" alt="Urban fit" loading="lazy">
+                    <figcaption>Urban fit</figcaption>
+                </figure>
+                <figure>
+                    <img src="https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?auto=format&fit=crop&w=600&q=80" alt="Street style" loading="lazy">
+                    <figcaption>Street style</figcaption>
+                </figure>
+                <figure>
+                    <img src="https://images.unsplash.com/photo-1552374196-1ab2a1c593e8?auto=format&fit=crop&w=600&q=80" alt="City vibe" loading="lazy">
+                    <figcaption>City vibe</figcaption>
+                </figure>
+            </div>
         </div>
     </section>
 
     <section class="faq-section" id="faq">
-        <h2 class="section-title">Preguntas Frecuentes</h2>
+        <div class="section-head" style="margin-bottom:20px">
+            <h2>Preguntas frecuentes</h2>
+        </div>
         <div class="faq-list">
             <details>
-                <summary>¿Cuáles son las medidas exactas?</summary>
-                <p>Silueta unitalla oversize: ancho 60 cm y largo 75 cm. Calce holgado que equivale a una talla Grande regular, pensado para adaptarse a distintos cuerpos sin perder estilo urbano.</p>
+                <summary>¿Qué tallas manejan?</summary>
+                <p>Contamos con tallas XS, S, M, L, XL y XXL. Al comprar, selecciona tu talla en la página del producto y te confirmamos disponibilidad por WhatsApp.</p>
             </details>
             <details>
-                <summary>¿Cómo se coordina el envío tras pagar?</summary>
-                <p>Al completar tu pago en Mercado Pago, te contactamos por WhatsApp al 5569732164 para confirmar dirección, horario de entrega y sucursal más cercana. Envío express local en zona metropolitana.</p>
+                <summary>¿Cómo compro?</summary>
+                <p>Elige tu playera, selecciona talla y pulsa "Comprar por WhatsApp". Te enviamos un mensaje prellenado para coordinar pago (transferencia u Oxxo) y entrega.</p>
             </details>
             <details>
-                <summary>¿Tienen precio especial de mayoreo para marcas?</summary>
-                <p>Sí. A partir de 3 piezas el precio es de $85 c/u; pieza suelta $100. Ideal para marcas, reventa, eventos y pedidos recurrentes de streetwear.</p>
+                <summary>¿Cuánto cuestan las playeras?</summary>
+                <p>Los precios van de $199 a $299 MXN según el modelo. Los precios están visibles en cada producto del catálogo.</p>
+            </details>
+            <details>
+                <summary>¿Hacen envíos?</summary>
+                <p>Sí, envío express en zona metropolitana (CDMX y Estado de México). También puedes recoger en nuestras sucursales de martes a domingo de 4 a 8 PM.</p>
             </details>
         </div>
     </section>
 
-    <!-- FOOTER SEO -->
-    <footer class="footer-seo" id="contacto">
-        <div class="footer-grid">
-            <div class="footer-col">
-                <h4>Bodega de playeras</h4>
-                <p>Bodega de playeras. Playeras oversize en tendencia. Urbano, streetwear, gym y reventa.</p>
+    <footer class="site-footer" id="contacto">
+        <div class="site-footer__grid">
+            <div>
+                <h4>Bodega de Playeras</h4>
+                <p>Tu tienda de streetwear oversize en México. Playeras en blanco y negro con la mejor calidad y precios accesibles.</p>
             </div>
-            <div class="footer-col">
+            <div>
                 <h4>Horario</h4>
                 <ul>
                     <li>Martes a Domingo</li>
                     <li>4:00 PM – 8:00 PM</li>
-                    <li>📍 Sucursales en Edo. Méx. y CDMX</li>
                 </ul>
             </div>
-            <div class="footer-col">
-                <h4>Informes y Pedidos</h4>
+            <div>
+                <h4>Contacto</h4>
                 <ul>
-                    <li>📲 <a href="tel:+525569732164">5569732164</a></li>
-                    <li>💬 <a href="https://wa.me/525569732164" target="_blank" rel="noopener">WhatsApp</a></li>
+                    <li><a href="tel:+525569732164">5569732164</a></li>
+                    <li><a href="https://wa.me/525569732164" target="_blank" rel="noopener">WhatsApp</a></li>
                 </ul>
             </div>
         </div>
-        <p class="footer-copy">&copy; 2026 Bodega de Playeras. Todos los derechos reservados.</p>
-        <p class="site-credit">mediagroup 2026/jahumar</p>
+        <p class="site-footer__bottom">&copy; 2026 Bodega de Playeras · mediagroup 2026/jahumar</p>
     </footer>
 
-    <!-- Aviso de pago -->
-    <div class="pay-alert-overlay" id="pay-alert-overlay" role="dialog" aria-modal="true" aria-labelledby="pay-alert-title">
-        <div class="pay-alert-box">
-            <h3 id="pay-alert-title">Pago seguro</h3>
-            <p id="pay-alert-message"></p>
-            <div class="pay-alert-actions">
-                <button type="button" class="pay-alert-cancel" id="pay-alert-cancel">Cancelar</button>
-                <button type="button" class="pay-alert-confirm" id="pay-alert-confirm">Continuar al pago</button>
-            </div>
-        </div>
-    </div>
+    <a href="https://wa.me/525569732164" class="wa-float" target="_blank" rel="noopener" aria-label="WhatsApp">💬</a>
 
-    <!-- COMPRA DIRECTA -->
-    <script>
-        const LINK_PAGO_MP = 'https://mpago.la/LINK_DE_PRUEBA';
-
-        function mostrarAlertaPago(mensaje, onConfirmar) {
-            const overlay = document.getElementById('pay-alert-overlay');
-            const msgEl = document.getElementById('pay-alert-message');
-            const btnConfirm = document.getElementById('pay-alert-confirm');
-            const btnCancel = document.getElementById('pay-alert-cancel');
-
-            msgEl.textContent = mensaje;
-            overlay.classList.add('is-visible');
-
-            const cerrar = () => overlay.classList.remove('is-visible');
-
-            btnConfirm.onclick = () => {
-                cerrar();
-                onConfirmar();
-            };
-            btnCancel.onclick = cerrar;
-            overlay.onclick = (e) => {
-                if (e.target === overlay) cerrar();
-            };
-        }
-
-        function procesarPagoDirecto() {
-            const mensaje =
-                'Serás redirigido al pago seguro. Al terminar, abriremos WhatsApp para coordinar la entrega de tu playera Unitalla Oversize.';
-
-            mostrarAlertaPago(mensaje, () => {
-                window.open(LINK_PAGO_MP, '_blank', 'noopener,noreferrer');
-            });
-        }
-    </script>
-
-    <!-- DATOS ESTRUCTURADOS (GOOGLE) -->
+    <script src="home.js"></script>
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@type": "ClothingStore",
       "name": "Bodega de Playeras",
-      "address": {
-        "@type": "PostalAddress",
-        "addressRegion": "Estado de México",
-        "addressCountry": "MX"
-      },
-      "url": "https://tusitio.com",
-      "telephone": "+525569732164"
+      "url": "https://bodegadeplayeras.netlify.app",
+      "telephone": "+525569732164",
+      "address": { "@type": "PostalAddress", "addressRegion": "Estado de México", "addressCountry": "MX" }
     }
     </script>
 </body>
