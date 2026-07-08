@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="es-MX">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="google-site-verification" content="XdOp3pEtUwwZTBhezQK1dflrmtGBMwA7yBj2yys1PDE">
+
+    <!-- SEO PODEROSO -->
+    <title>Bodega de Playeras Oversize | Mayoreo desde $85</title>
+    <meta name="description" content="Bodega de playeras oversize en blanco y negro, tela 200g, estampado frente y espalda. Mayoreo 3+ piezas $85, unitario $100. Martes a domingo 4-8 PM. WhatsApp 5577246836">
+    <meta name="keywords" content="playeras mayoreo atizapan, bodega de playeras naucalpan, playeras para serigrafia estado de mexico, distribuidora de ropa tlalnepantla">
+    <link rel="canonical" href="https://tusitio.com/">
+
+    <!-- TIPOGRAFÍA -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="pro.css">
+    <style>
+        .hero--home {
+            background-image: url('https://images.unsplash.com/photo-1523381210434-271e8be1f52b?auto=format&fit=crop&w=1400&q=80');
+            background-size: cover;
+            background-position: center;
+        }
+        .product-img { height: 320px; }
+        .btn-pay {
+            background: linear-gradient(135deg, var(--wood-dark), var(--wood));
+            border-color: var(--accent);
+            color: var(--text);
+        }
+        .btn-pay:hover {
+            background: var(--accent);
+            color: var(--black);
+            border-color: var(--accent);
+        }
+        .pay-alert-overlay {
+            position: fixed;
+            inset: 0;
+            z-index: 2000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            background: rgba(5, 4, 3, 0.75);
+            backdrop-filter: blur(8px);
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.25s ease, visibility 0.25s ease;
+        }
+        .pay-alert-overlay.is-visible {
+            opacity: 1;
+            visibility: visible;
+        }
+        .pay-alert-box {
+            max-width: 420px;
+            width: 100%;
+            padding: 28px 26px;
+            background: var(--surface);
+            border: 1px solid var(--border-strong);
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-glow);
+            text-align: center;
+        }
+        .pay-alert-box h3 {
+            font-size: 1.1rem;
+            margin-bottom: 12px;
+            color: var(--accent);
+        }
+        .pay-alert-box p {
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            line-height: 1.6;
+            margin-bottom: 22px;
+        }
+        .pay-alert-actions {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        .pay-alert-actions button {
+            padding: 12px 22px;
+            border-radius: var(--radius-sm);
+            font-weight: 700;
+            font-size: 0.85rem;
+            cursor: pointer;
+            border: none;
+            font-family: inherit;
+        }
+        .pay-alert-cancel {
+            background: transparent;
+            color: var(--text-muted);
+            border: 1px solid var(--border) !important;
+        }
+        .pay-alert-confirm {
+            background: var(--accent);
+            color: var(--black);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAVBAR -->
+    <nav class="navbar">
+        <div class="logo">Bodega de<span>playeras</span></div>
+        <ul class="nav-links">
+            <li><a href="#detalles">Detalles</a></li>
+            <li><a href="#zonas">Sucursales</a></li>
+            <li><a href="#catalogo">Catálogo</a></li>
+            <li><a href="#contacto">Contacto</a></li>
+        </ul>
+        <div class="nav-meta">NAUCALPAN · TLALNEPANTLA · IZCALLI · CDMX · <a href="tel:+525577246836">55 7724 6836</a></div>
+    </nav>
+
+    <p class="alert-banner"><strong>Stock limitado</strong> — Aparta las tuyas antes de que se agoten</p>
+
+    <header class="hero hero--home">
+        <div class="hero-content">
+            <span class="hero-badge">🔥 TENDENCIA OVERSIZE</span>
+            <h1>BODEGA DE PLAYERAS</h1>
+            <p>Bodega de playeras. Playeras oversize en ⚪ Blanco y ⚫ Negro.</p>
+            <a href="#catalogo" class="btn-cta">Ver Catálogo</a>
+        </div>
+    </header>
+
+    <section class="info-bar">
+        <div><strong>Horario</strong>Martes a Domingo · 4PM–8PM</div>
+        <div><strong>Mayoreo</strong>3+ piezas · $85 c/u</div>
+        <div><strong>Unitario</strong>1 pieza · $100</div>
+        <div><strong>Contacto</strong><a href="https://wa.me/525577246836">5577246836</a></div>
+    </section>
+
+    <section class="detalles-section" id="detalles">
+        <h2 class="section-title" style="margin-top:0">Detalles del producto</h2>
+        <p>Tela 200 g · Estampado frente y espalda · Corte oversize · Talla unitalla · Urbano, streetwear, gym o reventa 🔥</p>
+        <div class="pricing-banner" style="margin:28px 0 0">
+            <h3>💥 PRECIOS 💥</h3>
+            <div class="pricing-row">
+                <div>🛍️ Mayoreo 3+ pzas<span>$85</span></div>
+                <div>🛒 1 pieza<span>$100</span></div>
+            </div>
+        </div>
+    </section>
+
+    <h2 class="section-title" id="zonas">Selecciona tu Sucursal</h2>
+    <div class="zonas-container">
+        <a href="atizapan.html" class="zona-link">Atizapán de Zaragoza</a>
+        <a href="naucalpan.html" class="zona-link">Naucalpan</a>
+        <a href="tlalnepantla.html" class="zona-link">Tlalnepantla</a>
+        <a href="izcalli.html" class="zona-link">Cuautitlán Izcalli</a>
+    </div>
+
+    <!-- CATALOGO -->
+    <h2 class="section-title" id="catalogo">Playeras Oversize — Blanco y Negro</h2>
+    <main class="grid-productos">
+        
+        <!-- Producto 1 -->
+        <article class="product-card">
+            <span class="badge">⚪ BLANCO</span>
+            <img src="https://images.unsplash.com/photo-1576566588028-4147f3842f27?auto=format&fit=crop&w=500&q=80" alt="Playera oversize blanca" class="product-img">
+            <div class="product-info">
+                <h3>Playera Oversize Blanco</h3>
+                <ul class="features-list"><li>Tela 200g · Estampado frente y espalda</li><li>Oversize · Talla unitalla</li></ul>
+                <p class="product-price">Desde $85 <span class="text-muted">mayoreo 3+</span></p>
+                <p class="unitalla-info" style="font-size: 0.8rem; line-height: 1.4; color: #555; background: #f5f5f5; padding: 10px; border-radius: 5px; margin-bottom: 15px;">📏 Silueta Unitalla Oversize: Diseñada para adaptarse a cualquier cuerpo con el calce holgado perfecto (Equivale a talla Grande regular). Ancho: 60cm | Largo: 75cm.</p>
+                <button type="button" class="btn-buy btn-pay" onclick="procesarPagoDirecto()">🛍️ Comprar Unitalla Oversize</button>
+            </div>
+        </article>
+
+        <!-- Producto 2 -->
+        <article class="product-card">
+            <span class="badge">⚫ NEGRO</span>
+            <img src="https://images.unsplash.com/photo-1583743814966-8936f5b7be1a?auto=format&fit=crop&w=500&q=80" alt="Playera oversize negra" class="product-img">
+            <div class="product-info">
+                <h3>Playera Oversize Negro</h3>
+                <ul class="features-list"><li>Tela 200g · Estampado frente y espalda</li><li>Oversize · Talla unitalla</li></ul>
+                <p class="product-price">Desde $85 <span class="text-muted">mayoreo 3+</span></p>
+                <p class="unitalla-info" style="font-size: 0.8rem; line-height: 1.4; color: #555; background: #f5f5f5; padding: 10px; border-radius: 5px; margin-bottom: 15px;">📏 Silueta Unitalla Oversize: Diseñada para adaptarse a cualquier cuerpo con el calce holgado perfecto (Equivale a talla Grande regular). Ancho: 60cm | Largo: 75cm.</p>
+                <button type="button" class="btn-buy btn-pay" onclick="procesarPagoDirecto()">🛍️ Comprar Unitalla Oversize</button>
+            </div>
+        </article>
+
+    </main>
+
+    <section class="garantias-section" aria-label="Garantías de compra">
+        <div class="garantias-inner container">
+            <div class="garantia-item">
+                <span class="garantia-icon" aria-hidden="true">💳</span>
+                <h3>Pago Seguro</h3>
+                <p>Protección con Mercado Pago</p>
+            </div>
+            <div class="garantia-item">
+                <span class="garantia-icon" aria-hidden="true">🚀</span>
+                <h3>Envío Express Local</h3>
+                <p>Entrega rápida en zona metropolitana</p>
+            </div>
+            <div class="garantia-item">
+                <span class="garantia-icon" aria-hidden="true">🧵</span>
+                <h3>Algodón Pesado 200gr</h3>
+                <p>Tela premium con caída oversize</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="lookbook-section" aria-label="Lookbook streetwear">
+        <h2 class="section-title">Lookbook Streetwear</h2>
+        <div class="lookbook-grid">
+            <figure class="lookbook-item">
+                <img src="https://images.unsplash.com/photo-1529139574093-099fbd6a5430?auto=format&fit=crop&w=600&q=80" alt="Calce oversize en la calle" loading="lazy">
+                <span>Urban fit</span>
+            </figure>
+            <figure class="lookbook-item">
+                <img src="https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?auto=format&fit=crop&w=600&q=80" alt="Estilo streetwear con playera oversize" loading="lazy">
+                <span>Street style</span>
+            </figure>
+            <figure class="lookbook-item">
+                <img src="https://images.unsplash.com/photo-1552374196-1ab2a1c593e8?auto=format&fit=crop&w=600&q=80" alt="Look urbano con playera holgada" loading="lazy">
+                <span>City vibe</span>
+            </figure>
+        </div>
+    </section>
+
+    <section class="faq-section" id="faq">
+        <h2 class="section-title">Preguntas Frecuentes</h2>
+        <div class="faq-list">
+            <details>
+                <summary>¿Cuáles son las medidas exactas?</summary>
+                <p>Silueta unitalla oversize: ancho 60 cm y largo 75 cm. Calce holgado que equivale a una talla Grande regular, pensado para adaptarse a distintos cuerpos sin perder estilo urbano.</p>
+            </details>
+            <details>
+                <summary>¿Cómo se coordina el envío tras pagar?</summary>
+                <p>Al completar tu pago en Mercado Pago, te contactamos por WhatsApp al 5577246836 para confirmar dirección, horario de entrega y sucursal más cercana. Envío express local en zona metropolitana.</p>
+            </details>
+            <details>
+                <summary>¿Tienen precio especial de mayoreo para marcas?</summary>
+                <p>Sí. A partir de 3 piezas el precio es de $85 c/u; pieza suelta $100. Ideal para marcas, reventa, eventos y pedidos recurrentes de streetwear.</p>
+            </details>
+        </div>
+    </section>
+
+    <!-- FOOTER SEO -->
+    <footer class="footer-seo" id="contacto">
+        <div class="footer-grid">
+            <div class="footer-col">
+                <h4>Bodega de playeras</h4>
+                <p>Bodega de playeras. Playeras oversize en tendencia. Urbano, streetwear, gym y reventa.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Horario</h4>
+                <ul>
+                    <li>Martes a Domingo</li>
+                    <li>4:00 PM – 8:00 PM</li>
+                    <li>📍 Sucursales en Edo. Méx. y CDMX</li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Informes y Pedidos</h4>
+                <ul>
+                    <li>📲 <a href="tel:+525577246836">5577246836</a></li>
+                    <li>💬 <a href="https://wa.me/525577246836" target="_blank" rel="noopener">WhatsApp</a></li>
+                </ul>
+            </div>
+        </div>
+        <p class="footer-copy">&copy; 2026 Bodega de Playeras. Todos los derechos reservados.</p>
+        <p class="site-credit">mediagroup 2026/jahumar</p>
+    </footer>
+
+    <!-- Aviso de pago -->
+    <div class="pay-alert-overlay" id="pay-alert-overlay" role="dialog" aria-modal="true" aria-labelledby="pay-alert-title">
+        <div class="pay-alert-box">
+            <h3 id="pay-alert-title">Pago seguro</h3>
+            <p id="pay-alert-message"></p>
+            <div class="pay-alert-actions">
+                <button type="button" class="pay-alert-cancel" id="pay-alert-cancel">Cancelar</button>
+                <button type="button" class="pay-alert-confirm" id="pay-alert-confirm">Continuar al pago</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- COMPRA DIRECTA -->
+    <script>
+        const LINK_PAGO_MP = 'https://mpago.la/LINK_DE_PRUEBA';
+
+        function mostrarAlertaPago(mensaje, onConfirmar) {
+            const overlay = document.getElementById('pay-alert-overlay');
+            const msgEl = document.getElementById('pay-alert-message');
+            const btnConfirm = document.getElementById('pay-alert-confirm');
+            const btnCancel = document.getElementById('pay-alert-cancel');
+
+            msgEl.textContent = mensaje;
+            overlay.classList.add('is-visible');
+
+            const cerrar = () => overlay.classList.remove('is-visible');
+
+            btnConfirm.onclick = () => {
+                cerrar();
+                onConfirmar();
+            };
+            btnCancel.onclick = cerrar;
+            overlay.onclick = (e) => {
+                if (e.target === overlay) cerrar();
+            };
+        }
+
+        function procesarPagoDirecto() {
+            const mensaje =
+                'Serás redirigido al pago seguro. Al terminar, abriremos WhatsApp para coordinar la entrega de tu playera Unitalla Oversize.';
+
+            mostrarAlertaPago(mensaje, () => {
+                window.open(LINK_PAGO_MP, '_blank', 'noopener,noreferrer');
+            });
+        }
+    </script>
+
+    <!-- DATOS ESTRUCTURADOS (GOOGLE) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "ClothingStore",
+      "name": "Bodega de Playeras",
+      "address": {
+        "@type": "PostalAddress",
+        "addressRegion": "Estado de México",
+        "addressCountry": "MX"
+      },
+      "url": "https://tusitio.com",
+      "telephone": "+525577246836"
+    }
+    </script>
+</body>
+</html>
