@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="es-MX">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="google-site-verification" content="XdOp3pEtUwwZTBhezQK1dflrmtGBMwA7yBj2yys1PDE">
+
+    <!-- SEO: Reemplaza título y descripción con el nombre real de tu playera -->
+    <title>Playera Graphic Tee | Bodega de Playeras</title>
+    <meta name="description" content="Playera Graphic Tee oversize. Tela premium, estampado frente y espalda. Compra directa por WhatsApp. Envío en zona metropolitana.">
+
+    <!-- Tipografía moderna estilo marca global -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <!-- —— Barra superior minimalista —— -->
+    <header class="site-header">
+        <div class="site-header__inner">
+            <!-- Reemplaza el enlace con la URL de tu inicio (ej. index.html) -->
+            <a href="index.html" class="site-header__logo">BODEGA<span>PLAYERAS</span></a>
+            <a href="https://wa.me/525569732164" class="site-header__help" target="_blank" rel="noopener">Ayuda</a>
+        </div>
+    </header>
+
+    <main class="product-page">
+        <div class="product-page__inner">
+
+            <!-- ═══════════════════════════════════════════
+                 COLUMNA IZQUIERDA — Galería de imágenes
+                 Reemplaza las rutas src="" con tus fotos reales
+                 ═══════════════════════════════════════════ -->
+            <section class="gallery" aria-label="Galería del producto">
+
+                <!-- Imagen principal: cambia src y alt por tu foto hero -->
+                <div class="gallery__main" id="galleryMain">
+                    <img
+                        id="mainImage"
+                        class="gallery__main-img"
+                        src="https://images.unsplash.com/photo-1576566588028-4147f3842f27?auto=format&fit=crop&w=900&q=85"
+                        alt="Playera Graphic Tee — vista frontal"
+                    >
+                </div>
+
+                <!-- Miniaturas: reemplaza cada src con tus 3 fotos del producto -->
+                <div class="gallery__thumbs" role="tablist" aria-label="Vistas del producto">
+                    <button type="button" class="gallery__thumb is-active" data-src="https://images.unsplash.com/photo-1576566588028-4147f3842f27?auto=format&fit=crop&w=900&q=85" aria-label="Vista frontal" aria-selected="true">
+                        <img src="https://images.unsplash.com/photo-1576566588028-4147f3842f27?auto=format&fit=crop&w=200&q=70" alt="Miniatura frontal">
+                    </button>
+                    <button type="button" class="gallery__thumb" data-src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=900&q=85" aria-label="Vista lateral" aria-selected="false">
+                        <img src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=200&q=70" alt="Miniatura lateral">
+                    </button>
+                    <button type="button" class="gallery__thumb" data-src="https://images.unsplash.com/photo-1503342217507-b15a8e751fff?auto=format&fit=crop&w=900&q=85" aria-label="Vista detalle" aria-selected="false">
+                        <img src="https://images.unsplash.com/photo-1503342217507-b15a8e751fff?auto=format&fit=crop&w=200&q=70" alt="Miniatura detalle">
+                    </button>
+                </div>
+            </section>
+
+            <!-- ═══════════════════════════════════════════
+                 COLUMNA DERECHA — Info y compra
+                 Reemplaza textos, precio ($199 o $299) según producto
+                 ═══════════════════════════════════════════ -->
+            <section class="product-info">
+
+                <!-- Nombre del producto: el JS lee este h1 automáticamente -->
+                <h1 class="product-info__title">Playera Graphic Tee Oversize</h1>
+
+                <!-- Precio: cambia a $199 o $299 — el JS lee .product-info__price -->
+                <div class="product-info__price-row">
+                    <p class="product-info__price" data-price="199">$199 <span class="product-info__currency">MXN</span></p>
+                    <!-- Opcional: precio tachado si hay oferta -->
+                    <!-- <p class="product-info__price-old">$299 MXN</p> -->
+                </div>
+
+                <!-- Calificación fija estilo Shein -->
+                <div class="product-info__rating" aria-label="Calificación 4.8 de 5 estrellas">
+                    <div class="stars" aria-hidden="true">
+                        <span class="stars__icon">★</span>
+                        <span class="stars__icon">★</span>
+                        <span class="stars__icon">★</span>
+                        <span class="stars__icon">★</span>
+                        <span class="stars__icon stars__icon--half">★</span>
+                    </div>
+                    <span class="product-info__rating-score">4.8</span>
+                    <span class="product-info__rating-count">(36 reseñas)</span>
+                </div>
+
+                <p class="product-info__desc">
+                    <!-- Reemplaza esta descripción con los detalles de tu playera -->
+                    Corte oversize unisex, tela 200g premium. Estampado frente y espalda resistente al lavado.
+                    Ideal para looks urbanos y streetwear.
+                </p>
+
+                <!-- Selector de tallas -->
+                <div class="size-selector">
+                    <div class="size-selector__header">
+                        <span class="size-selector__label">Talla</span>
+                        <!-- Etiqueta de urgencia psicológica -->
+                        <span class="size-selector__urgency">¡Últimas piezas disponibles!</span>
+                    </div>
+
+                    <div class="size-selector__grid" id="sizeGrid" role="group" aria-label="Selecciona tu talla">
+                        <button type="button" class="size-btn" data-size="XS">XS</button>
+                        <button type="button" class="size-btn" data-size="S">S</button>
+                        <button type="button" class="size-btn" data-size="M">M</button>
+                        <button type="button" class="size-btn" data-size="L">L</button>
+                        <button type="button" class="size-btn" data-size="XL">XL</button>
+                        <button type="button" class="size-btn" data-size="XXL">XXL</button>
+                    </div>
+
+                    <p class="size-selector__hint" id="sizeHint">Pocas unidades en esta talla</p>
+                </div>
+
+                <!-- Botón principal: el JS captura el clic y abre WhatsApp -->
+                <button type="button" class="btn-buy" id="btnBuy">
+                    Añadir a la Bolsa (Comprar por WhatsApp)
+                </button>
+
+                <ul class="product-info__trust">
+                    <li>✓ Pago por transferencia o depósito Oxxo</li>
+                    <li>✓ Confirmación inmediata por WhatsApp</li>
+                    <li>✓ Envío en zona metropolitana CDMX y Edomex</li>
+                </ul>
+            </section>
+        </div>
+    </main>
+
+    <!-- Modal de validación: aparece si no seleccionó talla -->
+    <div class="alert-modal" id="alertModal" role="dialog" aria-modal="true" aria-labelledby="alertTitle" hidden>
+        <div class="alert-modal__backdrop" id="alertBackdrop"></div>
+        <div class="alert-modal__box">
+            <div class="alert-modal__icon" aria-hidden="true">!</div>
+            <h2 class="alert-modal__title" id="alertTitle">Selecciona tu talla</h2>
+            <p class="alert-modal__text">Por favor, selecciona tu talla antes de continuar con tu pedido</p>
+            <button type="button" class="alert-modal__btn" id="alertClose">Entendido</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
