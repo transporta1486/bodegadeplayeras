@@ -47,6 +47,12 @@
         return name && name !== 'Cargando…' ? name : 'nuestro producto';
     }
 
+    /* Nombre del producto del pedido: el elegido en el flujo o el de la página */
+    function orderProductName() {
+        if (order.data && order.data.producto) return order.data.producto;
+        return productName();
+    }
+
     /* ── Estado del pedido guiado (solo página de producto) ── */
     const order = { active: false, i: 0, steps: [], data: {}, tenis: false };
 
@@ -98,12 +104,20 @@
         order.editing = null;
         order.i = 0;
         order.data = {};
-        order.tenis = /tenis|zapat|calzad/i.test(productName());
-        order.steps = order.tenis ? ['talla', 'color', 'cantidad'] : ['color', 'cantidad'];
+        order.needProduct = !isProducto;
+        if (isProducto) {
+            order.tenis = /tenis|zapat|calzad/i.test(productName());
+            order.steps = order.tenis ? ['talla', 'color', 'cantidad'] : ['color', 'cantidad'];
+        } else {
+            // En sucursal aún no sabemos qué producto: se pregunta primero
+            order.tenis = false;
+            order.steps = ['producto', 'color', 'cantidad'];
+        }
         askStep();
     }
 
     function promptText(field) {
+        if (field === 'producto') return '🛍️ ¿Qué te interesa? <strong>Playera</strong> (oversize, talla única) o <strong>Tenis de niño</strong> (tallas 12–16). Ambos a $170.';
         if (field === 'talla') return '📏 ¿Qué <strong>talla</strong> necesitas? (disponibles: <strong>12 a 16</strong>)';
         if (field === 'color') {
             return order.tenis
@@ -142,7 +156,7 @@
         const tipo = orderTipo();
 
         const msg = 'Hola, quiero hacer este pedido:\n' +
-            '• Producto: ' + productName() + '\n' +
+            '• Producto: ' + orderProductName() + '\n' +
             '• Talla: ' + talla + '\n' +
             '• Color: ' + color + '\n' +
             '• Cantidad: ' + cantTxt + ' (' + tipo + ')\n' +
@@ -150,13 +164,14 @@
             '¿Me confirmas disponibilidad y los datos para pagar por transferencia?';
 
         let edits = '<div class="chatbot__edits">';
+        if (order.needProduct) edits += '<button class="chatbot__edit" data-edit="producto">✏️ Producto</button>';
         if (order.tenis) edits += '<button class="chatbot__edit" data-edit="talla">✏️ Talla</button>';
         edits += '<button class="chatbot__edit" data-edit="color">✏️ Color</button>';
         edits += '<button class="chatbot__edit" data-edit="cantidad">✏️ Cantidad</button>';
         edits += '</div>';
 
         botSay('✅ <strong>Revisa tu pedido:</strong><br>' +
-            '👕 ' + productName() + '<br>' +
+            '👕 ' + orderProductName() + '<br>' +
             '📏 Talla: ' + talla + '<br>' +
             '🎨 Color: ' + color + '<br>' +
             '🔢 Cantidad: ' + cantTxt + ' (' + tipo + ')<br>' +
@@ -204,9 +219,30 @@
 
         // Edición de un solo campo → vuelve al resumen
         if (order.editing) {
+            if (order.editing === 'producto') {
+                order.data.producto = text;
+                order.tenis = /tenis|zapat|calzad|sneaker/i.test(text);
+                order.editing = null;
+                if (order.tenis && !order.data.talla) { askField('talla'); return; }
+                if (!order.tenis) { delete order.data.talla; }
+                showSummary();
+                return;
+            }
             order.data[order.editing] = text;
             order.editing = null;
             showSummary();
+            return;
+        }
+
+        // Paso "producto" (solo sucursal): define si es tenis y ajusta los pasos
+        if (order.steps[order.i] === 'producto') {
+            order.data.producto = text;
+            order.tenis = /tenis|zapat|calzad|sneaker/i.test(text);
+            order.steps = order.tenis
+                ? ['producto', 'talla', 'color', 'cantidad']
+                : ['producto', 'color', 'cantidad'];
+            order.i = 1;
+            askStep();
             return;
         }
 
@@ -220,10 +256,16 @@
     function respond(text) {
         const q = text.toLowerCase();
 
-        // En página de producto: control del flujo guiado
-        if (isProducto) {
+        // Control del flujo guiado (página de producto y sucursales)
+        if (isProducto || isSucursal) {
             if (/(reinici|nuevo pedido|otro pedido|empezar)/.test(q)) { startOrder(); return; }
             if (order.active) { processStep(text); return; }
+        }
+
+        // En sucursal: intención de compra inicia el pedido guiado
+        if (isSucursal && /(hacer un pedido|hacer pedido|quiero comprar|quiero un|quiero una|quiero unos|quiero unas|comprar|ordenar|apartar|lo quiero|hacer mi pedido|pedido)/.test(q)) {
+            startOrder();
+            return;
         }
 
         if (/(preguntas frecuentes|faq|dudas|pregunta frecuente)/.test(q)) {
@@ -314,7 +356,7 @@
         if (isProducto) {
             chips = [['reiniciar', '🔄 Nuevo pedido'], ['colores', '🎨 Colores'], ['precio', '🔥 Precio'], ['pago', '💳 Pago']];
         } else if (isSucursal) {
-            chips = [['ubicacion', '📍 Ubicación'], ['horario', '🕒 Horario'], ['entrega', '🚚 Entrega'], ['precio', '🔥 Precios']];
+            chips = [['hacer pedido', '🛒 Hacer pedido'], ['ubicacion', '📍 Ubicación'], ['horario', '🕒 Horario'], ['entrega', '🚚 Entrega']];
         } else {
             chips = [['playeras', '👕 Playeras'], ['tenis', '👟 Tenis niño'], ['precio', '🔥 Precios'], ['envio', '🚚 Envíos']];
         }
@@ -337,7 +379,7 @@
         } else if (isSucursal) {
             addMessage('¡Hola! 👋 Estás en nuestra sucursal de ' + sucArea + '.', 'bot');
             setTimeout(function () {
-                addMessage('🕒 Horario: martes a domingo, 4:00–8:00 PM. Puedo darte la ubicación o coordinar tu entrega. Además, ¡todo a $170!', 'bot');
+                addMessage('🕒 Horario: martes a domingo, 4:00–8:00 PM. Puedo darte la ubicación, coordinar tu entrega o tomar tu pedido aquí mismo (escribe "hacer pedido"). ¡Todo a $170! 🔥', 'bot');
                 scrollBottom();
             }, 500);
         } else {
