@@ -813,7 +813,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
     position: fixed;
     bottom: 24px;
     right: 24px;
-    z-index: 300;
+    z-index: 1000;
     width: 56px;
     height: 56px;
     background: var(--wa);
@@ -823,7 +823,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
     align-items: center;
     justify-content: center;
     font-size: 1.6rem;
-    box-shadow: 0 6px 24px rgba(37, 211, 102, 0.45);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15), 0 6px 22px rgba(37, 211, 102, 0.4);
     transition: all 0.3s ease;
 }
 
@@ -1311,20 +1311,27 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
     position: fixed;
     right: 24px;
     bottom: 90px;
-    z-index: 320;
-    width: 56px;
-    height: 56px;
+    z-index: 1000;
+    width: 58px;
+    height: 58px;
     border-radius: 50%;
     background: linear-gradient(135deg, var(--coral), #ff6b7a);
     color: var(--white);
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 1.5rem;
-    box-shadow: 0 6px 24px rgba(255, 71, 87, 0.45);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15), 0 6px 22px rgba(255, 71, 87, 0.4);
     animation: chatPulse 2.4s ease-in-out infinite;
     transition: transform 0.25s var(--ease);
 }
+
+.chatbot__toggle-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.chatbot__toggle svg { display: block; }
 
 .chatbot__toggle:hover { transform: scale(1.08); }
 .chatbot.is-open .chatbot__toggle { display: none; }
@@ -1356,7 +1363,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
     position: fixed;
     right: 24px;
     bottom: 90px;
-    z-index: 320;
+    z-index: 1001;
     width: 360px;
     max-width: calc(100vw - 32px);
     height: min(560px, 72vh);
@@ -1582,17 +1589,44 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 
 .chatbot__input button:hover { transform: scale(1.06); }
 
-@media (max-width: 480px) {
-    .chatbot__window {
-        right: 12px;
-        left: 12px;
-        bottom: 86px;
-        width: auto;
-        max-width: none;
-        height: min(70vh, 520px);
+@media (max-width: 600px) {
+    /* Burbuja del chatbot: esquina inferior derecha, tamaño refinado */
+    .chatbot__toggle {
+        right: 20px;
+        bottom: 20px;
+        width: 52px;
+        height: 52px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
     }
-    .chatbot__toggle { right: 16px; bottom: 82px; }
-    .wa-float { bottom: 16px; right: 16px; }
+    .chatbot__toggle svg { width: 24px; height: 24px; }
+
+    /* Botón de WhatsApp a la esquina inferior izquierda para no chocar */
+    .wa-float {
+        left: 20px;
+        right: auto;
+        bottom: 20px;
+        width: 52px;
+        height: 52px;
+        font-size: 1.5rem;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    }
+
+    /* Ventana del chat a pantalla completa con X visible */
+    .chatbot__window {
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        width: 100%;
+        max-width: none;
+        height: 100%;
+        border: none;
+        border-radius: 0;
+    }
+    .chatbot__close { width: 40px; height: 40px; font-size: 1.9rem; }
+
+    /* Margen inferior para que los botones no tapen el contenido */
+    .site-footer { padding-bottom: 96px; }
 }
 
 /* ═══ MEDIA DE PLAYERAS (catálogo real) ═══ */
