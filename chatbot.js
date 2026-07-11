@@ -1,8 +1,9 @@
 /**
  * Bodega de Playeras — Chatbot de ventas
  * Detecta la página con window.location.pathname y adapta el saludo,
- * los accesos rápidos y las respuestas. Cada respuesta cierra con un
- * botón verde de WhatsApp prellenado dinámicamente con la consulta.
+ * los accesos rápidos y las respuestas. En la página de producto ejecuta
+ * un flujo guiado (talla → color → cantidad) y arma un botón de WhatsApp
+ * prellenado con todos los datos del pedido.
  */
 (function () {
     'use strict';
@@ -38,6 +39,7 @@
         if (path.indexOf(key) !== -1) { sucKey = key; break; }
     }
     const isSucursal = sucKey !== null;
+    const sucArea = isSucursal ? SUC_INFO[sucKey] : '';
 
     function productName() {
         const el = document.querySelector('.product-info__title');
@@ -45,7 +47,8 @@
         return name && name !== 'Cargando…' ? name : 'nuestro producto';
     }
 
-    const sucArea = isSucursal ? SUC_INFO[sucKey] : '';
+    /* ── Estado del pedido guiado (solo página de producto) ── */
+    const order = { active: false, i: 0, steps: [], data: {}, tenis: false };
 
     /* ── Utilidades ── */
     let greeted = false;
@@ -83,28 +86,115 @@
             '" target="_blank" rel="noopener">💬 ' + label + '</a>';
     }
 
-    /* Sufijo de contexto según la página (producto / sucursal) */
     function ctxSuffix() {
         if (isProducto) return ' de ' + productName();
         if (isSucursal) return ' en la sucursal de ' + sucArea;
         return '';
     }
 
-    /* ── Cierre de pedido en la página de producto ── */
-    function buildOrder(text) {
-        const q = text.toLowerCase();
-        const tipo = /(mayoreo|por mayor|docena|al por mayor)/.test(q) ? 'MAYOREO' : 'menudeo';
-        const msg = 'Hola, quiero pedir: ' + productName() + ' (' + tipo + '). ' +
-            'Detalles (talla/color): ' + text + '. Precio $170. ' +
-            '¿Me confirmas disponibilidad y los datos para pagar por transferencia?';
-        botSay('¡Perfecto! 📝 Preparo tu pedido de <strong>' + productName() + '</strong> (' + tipo + '). ' +
-            'Toca el botón para confirmarlo por WhatsApp y te pasamos los datos de transferencia:<br>' +
-            waCTA('Confirmar pedido', msg), true);
+    /* ── Flujo guiado de pedido ── */
+    function startOrder() {
+        order.active = true;
+        order.i = 0;
+        order.data = {};
+        order.tenis = /tenis|zapat|calzad/i.test(productName());
+        order.steps = order.tenis ? ['talla', 'color', 'cantidad'] : ['color', 'cantidad'];
+        askStep();
     }
 
-    /* ── Motor de respuestas ── */
+    function askStep() {
+        const step = order.steps[order.i];
+        if (step === 'talla') {
+            botSay('👟 Para tomar tu pedido, ¿qué <strong>talla</strong> necesitas? (disponibles: <strong>12 a 16</strong>)', true);
+        } else if (step === 'color') {
+            if (order.tenis) {
+                botSay('🎨 ¿Qué <strong>color</strong> prefieres? (ej: blanco/rosa, negro o rosa)', true);
+            } else {
+                botSay('👕 Esta playera es <strong>talla única oversize</strong>. ¿Qué <strong>color</strong> quieres? (blanco o negro)', true);
+            }
+        } else if (step === 'cantidad') {
+            botSay('🔢 ¿<strong>Cuántas piezas</strong> quieres? (1 pieza = menudeo · 6 o más = mayoreo 📦)', true);
+        }
+    }
+
+    function finishOrder() {
+        order.active = false;
+        const talla = order.tenis ? (order.data.talla || 'por confirmar') : 'talla única (oversize)';
+        const color = order.data.color || 'por confirmar';
+        const cantTxt = order.data.cantidad || '1';
+        const n = parseInt(cantTxt, 10);
+        const tipo = (!isNaN(n) && n >= 6) ? 'MAYOREO' : 'menudeo';
+
+        const msg = 'Hola, quiero hacer este pedido:\n' +
+            '• Producto: ' + productName() + '\n' +
+            '• Talla: ' + talla + '\n' +
+            '• Color: ' + color + '\n' +
+            '• Cantidad: ' + cantTxt + ' (' + tipo + ')\n' +
+            '• Precio: $170 c/u\n' +
+            '¿Me confirmas disponibilidad y los datos para pagar por transferencia?';
+
+        botSay('✅ <strong>¡Listo! Este es tu pedido:</strong><br>' +
+            '👕 ' + productName() + '<br>' +
+            '📏 Talla: ' + talla + '<br>' +
+            '🎨 Color: ' + color + '<br>' +
+            '🔢 Cantidad: ' + cantTxt + ' (' + tipo + ')<br>' +
+            '💲 $170 c/u<br>' +
+            'Toca el botón para confirmarlo por WhatsApp:<br>' +
+            waCTA('Confirmar pedido', msg) +
+            '<br><small>¿Otro pedido? Escribe "reiniciar".</small>', true);
+    }
+
+    function processStep(text) {
+        const q = text.toLowerCase();
+
+        // Permite preguntar dudas sin perder el paso actual
+        if (/(precio|cuesta|cu[aá]nto|costo|vale)/.test(q)) {
+            botSay('🔥 Todos los artículos están a <strong>$170 c/u</strong> (mayoreo desde 6 piezas).', true);
+            askStep();
+            return;
+        }
+        if (/(env[ií]o|entrega|recoger)/.test(q)) {
+            botSay('🚚 Enviamos en CDMX y Edomex, o puedes recoger en sucursal. Lo coordinamos al confirmar.', true);
+            askStep();
+            return;
+        }
+        if (/(pago|transfer|pagar|dep[oó]sito)/.test(q)) {
+            botSay('💳 El pago es <strong>solo por transferencia bancaria</strong>. Te pasamos los datos al confirmar.', true);
+            askStep();
+            return;
+        }
+        if (/(color|colores|tono)/.test(q) && order.steps[order.i] !== 'color') {
+            botSay('🎨 Colores: playeras en blanco/negro; tenis en blanco/rosa, negro o rosa.', true);
+            askStep();
+            return;
+        }
+        if (/(mayoreo|por mayor|docena)/.test(q) && order.steps[order.i] !== 'cantidad') {
+            botSay('📦 Desde 6 piezas aplica precio de mayoreo. Indícame la cantidad y lo calculo.', true);
+            askStep();
+            return;
+        }
+        if (/(preguntas frecuentes|faq|duda)/.test(q)) {
+            botSay('❓ Todo a $170, pago por transferencia, envíos CDMX/Edomex; playeras talla única y tenis 12–16.', true);
+            askStep();
+            return;
+        }
+
+        // Guarda la respuesta del paso y avanza
+        const step = order.steps[order.i];
+        order.data[step] = text;
+        order.i++;
+        if (order.i < order.steps.length) { askStep(); } else { finishOrder(); }
+    }
+
+    /* ── Motor de respuestas general ── */
     function respond(text) {
         const q = text.toLowerCase();
+
+        // En página de producto: control del flujo guiado
+        if (isProducto) {
+            if (/(reinici|nuevo pedido|otro pedido|empezar)/.test(q)) { startOrder(); return; }
+            if (order.active) { processStep(text); return; }
+        }
 
         if (/(preguntas frecuentes|faq|dudas|pregunta frecuente)/.test(q)) {
             botSay('❓ <strong>Preguntas frecuentes:</strong><br>' +
@@ -120,8 +210,8 @@
                 'tenis de niño en <strong>blanco/rosa, negro y rosa</strong>.<br>' +
                 waCTA('Preguntar por color', 'Hola, quiero saber los colores disponibles' + ctxSuffix() + '.'), true);
 
-        } else if (/(mayoreo|por mayor|docena|revend|al por mayor)/.test(q) && !isProducto) {
-            botSay('📦 ¡Sí manejamos <strong>mayoreo y menudeo</strong>! Entre más piezas, mejor precio. ' +
+        } else if (/(mayoreo|por mayor|docena|revend|al por mayor)/.test(q)) {
+            botSay('📦 ¡Sí manejamos <strong>mayoreo y menudeo</strong>! Desde <strong>6 piezas</strong> aplica precio de mayoreo. ' +
                 'Dinos qué cantidad necesitas y te cotizamos.<br>' +
                 waCTA('Cotizar mayoreo', 'Hola, me interesa comprar por MAYOREO' + ctxSuffix() + '. ¿Me pasan precios por cantidad?'), true);
 
@@ -164,7 +254,7 @@
             botSay('👕 Nuestras <strong>playeras son unisex oversize</strong>, talla única y calce holgado. ¡Todas a <strong>$170</strong>!<br>' +
                 waCTA('Ver playeras por WhatsApp', 'Hola, me interesan las playeras oversize ($170). ¿Me pasas el catálogo disponible?'), true);
 
-        } else if (/(talla|medida|queda|grande|chico|chica|n[uú]mero)/.test(q) && !isProducto) {
+        } else if (/(talla|medida|queda|grande|chico|chica|n[uú]mero)/.test(q)) {
             botSay('📏 Las <strong>playeras</strong> son talla única oversize (calce holgado). ' +
                 'Los <strong>tenis de niño</strong> van en tallas <strong>12 a 16</strong>.<br>' +
                 waCTA('Preguntar por mi talla', 'Hola, quiero saber sobre tallas disponibles' + ctxSuffix() + '.'), true);
@@ -178,7 +268,8 @@
 
         } else {
             if (isProducto) {
-                buildOrder(text);
+                // Fuera del flujo: reinicia la toma de pedido
+                startOrder();
             } else {
                 botSay('No estoy seguro de haberte entendido 🤔, pero puedo ayudarte con <strong>playeras</strong>, <strong>tenis</strong>, ' +
                     'colores, mayoreo, precios, envíos, pago o preguntas frecuentes. También te atendemos directo:<br>' +
@@ -191,7 +282,7 @@
     function setChips() {
         let chips;
         if (isProducto) {
-            chips = [['menudeo', '🛍️ Menudeo'], ['mayoreo', '📦 Mayoreo'], ['colores', '🎨 Colores'], ['envio', '🚚 Envíos']];
+            chips = [['reiniciar', '🔄 Nuevo pedido'], ['colores', '🎨 Colores'], ['precio', '🔥 Precio'], ['pago', '💳 Pago']];
         } else if (isSucursal) {
             chips = [['ubicacion', '📍 Ubicación'], ['horario', '🕒 Horario'], ['entrega', '🚚 Entrega'], ['precio', '🔥 Precios']];
         } else {
@@ -210,8 +301,8 @@
         if (isProducto) {
             addMessage('¡Hola! 👋 Estás viendo: ' + productName() + '.', 'bot');
             setTimeout(function () {
-                addMessage('Para cerrar tu pedido escríbeme en un mensaje: 📏 talla, 🎨 color y si es 🛍️ menudeo o 📦 mayoreo. ¡Está a $170!', 'bot');
-                scrollBottom();
+                addMessage('Te ayudo a cerrar tu pedido en unos pasos. ¡Todo a $170! 🔥', 'bot');
+                startOrder();
             }, 500);
         } else if (isSucursal) {
             addMessage('¡Hola! 👋 Estás en nuestra sucursal de ' + sucArea + '.', 'bot');
