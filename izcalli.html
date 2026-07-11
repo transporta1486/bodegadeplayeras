@@ -16,14 +16,39 @@
     <header class="site-header">
         <div class="site-header__inner">
             <a href="index.html" class="site-header__logo">BODEGA<span>PLAYERAS</span><span class="sucursal-tag">IZCALLI</span></a>
-            <ul class="site-header__nav"><li><a href="index.html">← Inicio</a></li><li><a href="index.html#catalogo">Comprar</a></li></ul>
-            <a href="https://wa.me/525569732164" class="site-header__wa" target="_blank" rel="noopener">WhatsApp</a>
+            <ul class="site-header__nav" id="mainNav">
+                <li><a href="index.html">← Inicio</a></li>
+                <li><a href="index.html#catalogo">Playeras</a></li>
+                <li><a href="index.html#tenis">Tenis Niños</a></li>
+                <li><a href="index.html#sucursales">Sucursales</a></li>
+            </ul>
+            <div class="site-header__actions">
+                <a href="https://wa.me/525569732164" class="site-header__wa" target="_blank" rel="noopener">WhatsApp</a>
+                <button class="site-header__menu-btn" id="menuBtn" aria-label="Menú"><span></span><span></span><span></span></button>
+            </div>
         </div>
     </header>
     <section class="hero-local">
         <h1>Playeras Oversize en Cuautitlán Izcalli</h1>
         <p>Streetwear y oversize para toda la zona norte del Edomex.</p>
     </section>
+
+    <section class="offer-banner" id="ofertaBanner">
+        <div class="offer-banner__inner">
+            <span class="offer-banner__flag">🔥 Oferta por tiempo limitado</span>
+            <h2 class="offer-banner__title">TODO A <span>$170</span> MXN</h2>
+            <p class="offer-banner__sub">Playeras oversize y tenis de niño · Precio de remate por hoy</p>
+            <div class="countdown" id="countdown" role="timer" aria-live="polite">
+                <div class="countdown__box"><span class="countdown__num" id="cdHours">00</span><span class="countdown__label">Horas</span></div>
+                <span class="countdown__sep">:</span>
+                <div class="countdown__box"><span class="countdown__num" id="cdMins">00</span><span class="countdown__label">Min</span></div>
+                <span class="countdown__sep">:</span>
+                <div class="countdown__box"><span class="countdown__num" id="cdSecs">00</span><span class="countdown__label">Seg</span></div>
+            </div>
+            <a href="https://wa.me/525569732164?text=Hola%2C%20quiero%20aprovechar%20la%20oferta%20de%20todo%20a%20%24170%20MXN.%20%C2%BFMe%20pasas%20los%20modelos%20disponibles%3F" class="offer-banner__cta" target="_blank" rel="noopener">Aprovechar oferta</a>
+        </div>
+    </section>
+
     <div class="seo-block">
         <h2>Bodega de playeras en <span>Izcalli</span></h2>
         <p>Playeras unisex oversize en talla única. Calce holgado para streetwear.</p>
@@ -73,6 +98,7 @@
         <p class="site-footer__bottom">&copy; 2026 Bodega de Playeras · Izcalli</p>
     </footer>
     <a href="https://wa.me/525569732164" class="wa-float" target="_blank" rel="noopener" aria-label="WhatsApp">💬</a>
+    <script src="home.js"></script>
     <script type="application/ld+json">{"@context":"https://schema.org","@type":"LocalBusiness","name":"Bodega de Playeras — Izcalli","address":{"@type":"PostalAddress","addressLocality":"Cuautitlán Izcalli","addressRegion":"Estado de México"},"telephone":"+525569732164"}</script>
 </body>
 </html>
