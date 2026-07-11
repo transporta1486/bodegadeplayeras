@@ -98,7 +98,35 @@
         <p class="site-footer__bottom">&copy; 2026 Bodega de Playeras · CDMX</p>
     </footer>
     <a href="https://wa.me/525569732164" class="wa-float" target="_blank" rel="noopener" aria-label="WhatsApp">💬</a>
+
+    <!-- ═══ CHATBOT DE VENTAS ═══ -->
+    <div class="chatbot" id="chatbot">
+        <button class="chatbot__toggle" id="chatbotToggle" aria-label="Abrir chat de ventas">
+            <span class="chatbot__toggle-icon">🤖</span>
+            <span class="chatbot__badge">1</span>
+        </button>
+        <div class="chatbot__window" id="chatbotWindow" role="dialog" aria-label="Chat de ventas" aria-hidden="true">
+            <div class="chatbot__header">
+                <div class="chatbot__header-info">
+                    <span class="chatbot__avatar">BP</span>
+                    <div>
+                        <strong>Bodega de Playeras</strong>
+                        <span class="chatbot__status">En línea · Responde al instante</span>
+                    </div>
+                </div>
+                <button class="chatbot__close" id="chatbotClose" aria-label="Cerrar chat">&times;</button>
+            </div>
+            <div class="chatbot__body" id="chatbotBody"></div>
+            <div class="chatbot__quick" id="chatbotQuick"></div>
+            <form class="chatbot__input" id="chatbotForm" autocomplete="off">
+                <input type="text" id="chatbotInput" placeholder="Escribe aquí…" aria-label="Escribe tu mensaje">
+                <button type="submit" aria-label="Enviar mensaje">➤</button>
+            </form>
+        </div>
+    </div>
+
     <script src="home.js"></script>
+    <script src="chatbot.js"></script>
     <script type="application/ld+json">{"@context":"https://schema.org","@type":"LocalBusiness","name":"Bodega de Playeras — Cuauhtémoc","address":{"@type":"PostalAddress","addressLocality":"Cuauhtémoc","addressRegion":"CDMX","addressCountry":"MX"},"telephone":"+525569732164"}</script>
 </body>
 </html>
