@@ -1466,6 +1466,29 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
     border-bottom-right-radius: 4px;
 }
 
+.chatbot__edits {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-top: 10px;
+}
+
+.chatbot__edit {
+    font-size: 0.74rem;
+    font-weight: 600;
+    padding: 5px 10px;
+    border: 1.5px solid var(--line-dark);
+    border-radius: 14px;
+    background: var(--white);
+    color: var(--ink-soft);
+    transition: all 0.2s ease;
+}
+
+.chatbot__edit:hover {
+    border-color: var(--ink);
+    color: var(--ink);
+}
+
 .chatbot__wa {
     display: inline-flex;
     align-items: center;

@@ -95,6 +95,7 @@
     /* ── Flujo guiado de pedido ── */
     function startOrder() {
         order.active = true;
+        order.editing = null;
         order.i = 0;
         order.data = {};
         order.tenis = /tenis|zapat|calzad/i.test(productName());
@@ -102,28 +103,43 @@
         askStep();
     }
 
-    function askStep() {
-        const step = order.steps[order.i];
-        if (step === 'talla') {
-            botSay('👟 Para tomar tu pedido, ¿qué <strong>talla</strong> necesitas? (disponibles: <strong>12 a 16</strong>)', true);
-        } else if (step === 'color') {
-            if (order.tenis) {
-                botSay('🎨 ¿Qué <strong>color</strong> prefieres? (ej: blanco/rosa, negro o rosa)', true);
-            } else {
-                botSay('👕 Esta playera es <strong>talla única oversize</strong>. ¿Qué <strong>color</strong> quieres? (blanco o negro)', true);
-            }
-        } else if (step === 'cantidad') {
-            botSay('🔢 ¿<strong>Cuántas piezas</strong> quieres? (1 pieza = menudeo · 6 o más = mayoreo 📦)', true);
+    function promptText(field) {
+        if (field === 'talla') return '📏 ¿Qué <strong>talla</strong> necesitas? (disponibles: <strong>12 a 16</strong>)';
+        if (field === 'color') {
+            return order.tenis
+                ? '🎨 ¿Qué <strong>color</strong> prefieres? (ej: blanco/rosa, negro o rosa)'
+                : '👕 Esta playera es <strong>talla única oversize</strong>. ¿Qué <strong>color</strong> quieres? (blanco o negro)';
         }
+        if (field === 'cantidad') return '🔢 ¿<strong>Cuántas piezas</strong> quieres? (1 pieza = menudeo · 6 o más = mayoreo 📦)';
+        return '';
     }
 
-    function finishOrder() {
+    function askStep() {
+        botSay(promptText(order.steps[order.i]), true);
+    }
+
+    function askField(field) {
+        order.active = true;
+        order.editing = field;
+        botSay('✏️ ' + promptText(field), true);
+    }
+
+    function reAsk() {
+        if (order.editing) { botSay(promptText(order.editing), true); } else { askStep(); }
+    }
+
+    function orderTipo() {
+        const n = parseInt(order.data.cantidad || '1', 10);
+        return (!isNaN(n) && n >= 6) ? 'MAYOREO' : 'menudeo';
+    }
+
+    function showSummary() {
         order.active = false;
+        order.editing = null;
         const talla = order.tenis ? (order.data.talla || 'por confirmar') : 'talla única (oversize)';
         const color = order.data.color || 'por confirmar';
         const cantTxt = order.data.cantidad || '1';
-        const n = parseInt(cantTxt, 10);
-        const tipo = (!isNaN(n) && n >= 6) ? 'MAYOREO' : 'menudeo';
+        const tipo = orderTipo();
 
         const msg = 'Hola, quiero hacer este pedido:\n' +
             '• Producto: ' + productName() + '\n' +
@@ -133,57 +149,71 @@
             '• Precio: $170 c/u\n' +
             '¿Me confirmas disponibilidad y los datos para pagar por transferencia?';
 
-        botSay('✅ <strong>¡Listo! Este es tu pedido:</strong><br>' +
+        let edits = '<div class="chatbot__edits">';
+        if (order.tenis) edits += '<button class="chatbot__edit" data-edit="talla">✏️ Talla</button>';
+        edits += '<button class="chatbot__edit" data-edit="color">✏️ Color</button>';
+        edits += '<button class="chatbot__edit" data-edit="cantidad">✏️ Cantidad</button>';
+        edits += '</div>';
+
+        botSay('✅ <strong>Revisa tu pedido:</strong><br>' +
             '👕 ' + productName() + '<br>' +
             '📏 Talla: ' + talla + '<br>' +
             '🎨 Color: ' + color + '<br>' +
             '🔢 Cantidad: ' + cantTxt + ' (' + tipo + ')<br>' +
-            '💲 $170 c/u<br>' +
-            'Toca el botón para confirmarlo por WhatsApp:<br>' +
-            waCTA('Confirmar pedido', msg) +
-            '<br><small>¿Otro pedido? Escribe "reiniciar".</small>', true);
+            '💲 $170 c/u' +
+            edits +
+            waCTA('Confirmar y enviar', msg) +
+            '<br><small>Toca ✏️ para corregir algo antes de enviar.</small>', true);
     }
 
     function processStep(text) {
         const q = text.toLowerCase();
+        const current = order.editing || order.steps[order.i];
 
         // Permite preguntar dudas sin perder el paso actual
         if (/(precio|cuesta|cu[aá]nto|costo|vale)/.test(q)) {
             botSay('🔥 Todos los artículos están a <strong>$170 c/u</strong> (mayoreo desde 6 piezas).', true);
-            askStep();
+            reAsk();
             return;
         }
         if (/(env[ií]o|entrega|recoger)/.test(q)) {
             botSay('🚚 Enviamos en CDMX y Edomex, o puedes recoger en sucursal. Lo coordinamos al confirmar.', true);
-            askStep();
+            reAsk();
             return;
         }
         if (/(pago|transfer|pagar|dep[oó]sito)/.test(q)) {
             botSay('💳 El pago es <strong>solo por transferencia bancaria</strong>. Te pasamos los datos al confirmar.', true);
-            askStep();
+            reAsk();
             return;
         }
-        if (/(color|colores|tono)/.test(q) && order.steps[order.i] !== 'color') {
+        if (/(color|colores|tono)/.test(q) && current !== 'color') {
             botSay('🎨 Colores: playeras en blanco/negro; tenis en blanco/rosa, negro o rosa.', true);
-            askStep();
+            reAsk();
             return;
         }
-        if (/(mayoreo|por mayor|docena)/.test(q) && order.steps[order.i] !== 'cantidad') {
+        if (/(mayoreo|por mayor|docena)/.test(q) && current !== 'cantidad') {
             botSay('📦 Desde 6 piezas aplica precio de mayoreo. Indícame la cantidad y lo calculo.', true);
-            askStep();
+            reAsk();
             return;
         }
         if (/(preguntas frecuentes|faq|duda)/.test(q)) {
             botSay('❓ Todo a $170, pago por transferencia, envíos CDMX/Edomex; playeras talla única y tenis 12–16.', true);
-            askStep();
+            reAsk();
+            return;
+        }
+
+        // Edición de un solo campo → vuelve al resumen
+        if (order.editing) {
+            order.data[order.editing] = text;
+            order.editing = null;
+            showSummary();
             return;
         }
 
         // Guarda la respuesta del paso y avanza
-        const step = order.steps[order.i];
-        order.data[step] = text;
+        order.data[order.steps[order.i]] = text;
         order.i++;
-        if (order.i < order.steps.length) { askStep(); } else { finishOrder(); }
+        if (order.i < order.steps.length) { askStep(); } else { showSummary(); }
     }
 
     /* ── Motor de respuestas general ── */
@@ -354,5 +384,14 @@
         if (!btn) return;
         addMessage(btn.textContent.trim(), 'user');
         respond(btn.getAttribute('data-q'));
+    });
+
+    // Botones ✏️ para corregir un dato del resumen
+    body.addEventListener('click', function (e) {
+        const btn = e.target.closest('.chatbot__edit');
+        if (!btn) return;
+        const field = btn.getAttribute('data-edit');
+        addMessage('Corregir ' + field, 'user');
+        askField(field);
     });
 })();
