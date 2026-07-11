@@ -32,7 +32,7 @@
             productName +
             ' (' + FIT_LABEL + '). El precio es de ' +
             price +
-            '. ¿Me podrías proporcionar los datos para realizar el pago por transferencia o depósito en Oxxo?'
+            '. ¿Me podrías proporcionar los datos para realizar el pago por transferencia bancaria?'
         );
     }
 

@@ -5,9 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="google-site-verification" content="XdOp3pEtUwwZTBhezQK1dflrmtGBMwA7yBj2yys1PDE">
 
-    <!-- SEO: Reemplaza título y descripción con el nombre real de tu playera -->
-    <title>Playera Bugs Bunny Warner Bros Oversize | Bodega de Playeras</title>
-    <meta name="description" content="Playera unisex oversize Bugs Bunny Warner Bros. Talla única holgada. Oferta: todo a $170. Compra por WhatsApp.">
+    <!-- El título y la foto se actualizan según el producto (?p=slug) -->
+    <title>Producto | Bodega de Playeras</title>
+    <meta name="description" content="Playeras oversize y tenis de niño. Oferta: todo a $170 MXN. Compra por WhatsApp con pago por transferencia.">
 
     <!-- Tipografía moderna estilo marca global -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -40,60 +40,41 @@
         <div class="product-page__inner">
 
             <section class="gallery" aria-label="Galería del producto">
-                <img
-                    src="playera-producto.png"
-                    alt="Playera Oversize Bugs Bunny Warner Bros — vista principal y miniaturas"
-                    class="gallery__composite"
-                >
+                <div class="pdp-main" id="pdpMain">
+                    <img src="" alt="" class="pdp-img" id="pdpImg">
+                    <span class="pdp-zoom-hint">🔍 Toca la foto para acercar</span>
+                </div>
             </section>
 
-            <!-- ═══════════════════════════════════════════
-                 COLUMNA DERECHA — Info y compra
-                 Oferta general: todo a $170 (antes $299)
-                 ═══════════════════════════════════════════ -->
             <section class="product-info">
 
-                <!-- Nombre del producto: el JS lee este h1 automáticamente -->
-                <h1 class="product-info__title">Playera Bugs Bunny Warner Bros — Unisex Oversize</h1>
+                <a class="pdp-back" href="index.html#catalogo">← Volver al catálogo</a>
 
-                <!-- Precio: oferta general de la tienda — el JS lee .product-info__price -->
+                <h1 class="product-info__title" id="pdpTitle">Cargando…</h1>
+
                 <div class="product-info__price-row">
-                    <p class="product-info__price" data-price="170">$170 <span class="product-info__currency">MXN</span></p>
-                    <p class="product-info__price-old">$299 MXN</p>
+                    <p class="product-info__price" id="pdpPrice" data-price="170">$170 <span class="product-info__currency">MXN</span></p>
+                    <p class="product-info__price-old" id="pdpPriceOld">$299 MXN</p>
+                    <span class="pdp-offer-tag">Oferta</span>
                 </div>
 
-                <!-- Calificación fija estilo Shein -->
-                <div class="product-info__rating" aria-label="Calificación 4.8 de 5 estrellas">
-                    <div class="stars" aria-hidden="true">
-                        <span class="stars__icon">★</span>
-                        <span class="stars__icon">★</span>
-                        <span class="stars__icon">★</span>
-                        <span class="stars__icon">★</span>
-                        <span class="stars__icon stars__icon--half">★</span>
-                    </div>
-                    <span class="product-info__rating-score">4.8</span>
-                    <span class="product-info__rating-count">(36 reseñas)</span>
+                <div class="product-info__rating">
+                    <div class="stars" id="pdpStars" aria-hidden="true"></div>
+                    <span class="product-info__rating-score" id="pdpScore"></span>
+                    <span class="product-info__rating-count" id="pdpReviews"></span>
                 </div>
 
-                <p class="product-info__desc">
-                    Playera <strong>unisex oversize</strong> con estampado Bugs Bunny Warner Bros.
-                    Talla única con calce holgado para todos. Tela 200g premium, mangas amplias y caída streetwear.
-                </p>
+                <p class="product-info__desc" id="pdpDesc"></p>
 
-                <div class="fit-badge">
-                    <span class="fit-badge__tag">Unisex</span>
-                    <span class="fit-badge__tag">Oversize</span>
-                    <span class="fit-badge__tag">Talla única</span>
-                </div>
-                <p class="fit-badge__note">Sin selección de talla — una sola medida oversize que adapta a la mayoría.</p>
+                <div class="fit-badge" id="pdpTags"></div>
+                <p class="fit-badge__note" id="pdpNote"></p>
 
-                <!-- Botón principal: el JS captura el clic y abre WhatsApp -->
                 <button type="button" class="btn-buy" id="btnBuy">
-                    Añadir a la Bolsa (Comprar por WhatsApp)
+                    Comprar por WhatsApp
                 </button>
 
                 <ul class="product-info__trust">
-                    <li>✓ Pago por transferencia o depósito Oxxo</li>
+                    <li>✓ Pago únicamente por transferencia bancaria</li>
                     <li>✓ Confirmación inmediata por WhatsApp</li>
                     <li>✓ Envío en zona metropolitana CDMX y Edomex</li>
                 </ul>
@@ -120,6 +101,6 @@
 
     <a href="https://wa.me/525569732164" class="wa-float" target="_blank" rel="noopener" aria-label="WhatsApp">💬</a>
 
-    <script src="script.js"></script>
+    <script src="producto.js"></script>
 </body>
 </html>

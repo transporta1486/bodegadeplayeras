@@ -1011,6 +1011,77 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
     background: #f5f0e8;
 }
 
+/* ═══ PDP — GALERÍA CON ZOOM (foto más cercana) ═══ */
+.pdp-main {
+    position: relative;
+    aspect-ratio: 4 / 5;
+    overflow: hidden;
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--line);
+    background: linear-gradient(165deg, #fafafa 0%, #f1f1f3 100%);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    cursor: zoom-in;
+}
+
+.pdp-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 32%;
+    transform: scale(1.06);
+    transition: transform 0.45s var(--ease);
+    filter: brightness(1.03) contrast(1.03) saturate(1.04);
+    will-change: transform;
+}
+
+@media (hover: hover) {
+    .pdp-main:hover .pdp-img { transform: scale(1.4); }
+    .pdp-main:hover .pdp-img--zoom { transform: scale(2.3); }
+}
+
+.pdp-img--zoom { transform: scale(1.9); }
+
+.pdp-main.is-zoomed { cursor: zoom-out; }
+.pdp-main.is-zoomed .pdp-img { transform: scale(1.95); }
+.pdp-main.is-zoomed .pdp-img--zoom { transform: scale(2.6); }
+
+.pdp-zoom-hint {
+    position: absolute;
+    bottom: 12px;
+    left: 12px;
+    z-index: 2;
+    font-size: 0.72rem;
+    font-weight: 600;
+    color: var(--white);
+    background: rgba(0, 0, 0, 0.55);
+    padding: 6px 12px;
+    border-radius: 20px;
+    pointer-events: none;
+    backdrop-filter: blur(4px);
+}
+
+.pdp-back {
+    display: inline-block;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--ink-soft);
+    margin-bottom: 14px;
+}
+
+.pdp-back:hover { color: var(--ink); }
+
+.pdp-offer-tag {
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    background: var(--coral);
+    color: var(--white);
+    padding: 4px 10px;
+    border-radius: 3px;
+    align-self: center;
+}
+
 .hero-shop--gradient {
     background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 50%, #1a1a1a 100%);
 }
