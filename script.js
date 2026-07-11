@@ -18,7 +18,7 @@
 
     function getProductPrice() {
         const priceEl = document.querySelector('.product-info__price');
-        if (!priceEl) return '$199 MXN';
+        if (!priceEl) return '$170 MXN';
 
         const dataPrice = priceEl.getAttribute('data-price');
         if (dataPrice) return '$' + dataPrice + ' MXN';

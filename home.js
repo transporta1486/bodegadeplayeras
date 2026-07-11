@@ -23,7 +23,7 @@
 
                 if (filter === 'all') show = true;
                 else if (filter === 'oversize') show = variant === 'oversize';
-                else if (filter === '199' || filter === '299') show = price === filter;
+                else show = price === filter;
 
                 card.classList.toggle('is-hidden', !show);
             });
