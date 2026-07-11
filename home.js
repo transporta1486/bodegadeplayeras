@@ -35,4 +35,38 @@
             mainNav.classList.toggle('is-open');
         });
     }
+
+    // Cuenta regresiva de oferta — ciclo de 24 h por visitante
+    const cdHours = document.getElementById('cdHours');
+    const cdMins = document.getElementById('cdMins');
+    const cdSecs = document.getElementById('cdSecs');
+
+    if (cdHours && cdMins && cdSecs) {
+        const KEY = 'ofertaDeadline';
+        const CYCLE = 24 * 60 * 60 * 1000;
+
+        function getDeadline() {
+            let deadline = parseInt(localStorage.getItem(KEY), 10);
+            if (!deadline || isNaN(deadline) || deadline <= Date.now()) {
+                deadline = Date.now() + CYCLE;
+                localStorage.setItem(KEY, String(deadline));
+            }
+            return deadline;
+        }
+
+        function pad(n) { return n < 10 ? '0' + n : String(n); }
+
+        function tick() {
+            let diff = getDeadline() - Date.now();
+            if (diff < 0) diff = 0;
+
+            const totalSecs = Math.floor(diff / 1000);
+            cdHours.textContent = pad(Math.floor(totalSecs / 3600));
+            cdMins.textContent = pad(Math.floor((totalSecs % 3600) / 60));
+            cdSecs.textContent = pad(totalSecs % 60);
+        }
+
+        tick();
+        setInterval(tick, 1000);
+    }
 })();

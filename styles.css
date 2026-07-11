@@ -314,6 +314,125 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
     margin-bottom: 2px;
 }
 
+/* ═══ BANNER DE OFERTA + CUENTA REGRESIVA ═══ */
+.offer-banner {
+    background: linear-gradient(135deg, var(--coral) 0%, #ff6b7a 50%, #ff8f5a 100%);
+    color: var(--white);
+    text-align: center;
+    padding: 32px 20px;
+    overflow: hidden;
+}
+
+.offer-banner__inner {
+    max-width: 720px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.offer-banner__flag {
+    display: inline-block;
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    background: rgba(0, 0, 0, 0.18);
+    padding: 6px 14px;
+    border-radius: 20px;
+}
+
+.offer-banner__title {
+    font-family: var(--font-display);
+    font-size: clamp(1.8rem, 6vw, 2.8rem);
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    line-height: 1.05;
+}
+
+.offer-banner__title span {
+    color: var(--ink);
+    background: var(--white);
+    padding: 0 10px;
+    border-radius: var(--radius);
+}
+
+.offer-banner__sub {
+    font-size: 0.9rem;
+    opacity: 0.95;
+    margin-bottom: 6px;
+}
+
+.countdown {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin: 6px 0 4px;
+}
+
+.countdown__box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.16);
+    border: 1px solid rgba(255, 255, 255, 0.35);
+    border-radius: var(--radius-lg);
+    padding: 10px 14px;
+    min-width: 64px;
+    backdrop-filter: blur(4px);
+}
+
+.countdown__num {
+    font-family: var(--font-display);
+    font-size: clamp(1.4rem, 5vw, 2rem);
+    font-weight: 800;
+    line-height: 1;
+    font-variant-numeric: tabular-nums;
+}
+
+.countdown__label {
+    font-size: 0.62rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-top: 4px;
+    opacity: 0.85;
+}
+
+.countdown__sep {
+    font-family: var(--font-display);
+    font-size: 1.6rem;
+    font-weight: 800;
+    opacity: 0.7;
+    align-self: flex-start;
+    margin-top: 6px;
+}
+
+.offer-banner__cta {
+    margin-top: 10px;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 14px 34px;
+    background: var(--ink);
+    color: var(--white);
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 0.85rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    border-radius: var(--radius);
+    transition: all 0.3s ease;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.22);
+}
+
+.offer-banner__cta:hover {
+    transform: translateY(-2px);
+    background: #000;
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.3);
+}
+
 /* ═══ SECTION HEADERS ═══ */
 .section-head {
     display: flex;
